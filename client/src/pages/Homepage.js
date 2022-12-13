@@ -6,6 +6,7 @@ import {
   Container,
   Box,
   Text,
+  Image,
   Tab,
   Tabs,
   TabList,
