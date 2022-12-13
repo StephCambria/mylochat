@@ -36,7 +36,7 @@ const Homepage = () => {
 
   return (
     <Container maxW="xl" centerContent>
-      <Center
+       <Center
         d="flex"
         justifyContent="center"
         p={3}
@@ -46,7 +46,7 @@ const Homepage = () => {
         borderRadius="lg"
         borderWidth="1px"
       >
-        <HStack spacing="-20px">
+  <HStack spacing="-20px">
           <Text as="b" fontSize="4xl" fontFamily="Work Sans" color="gray.200">
             Mylo
           </Text>

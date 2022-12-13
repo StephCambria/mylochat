@@ -1,17 +1,21 @@
 import "./App.css";
-import { Route } from "react-router-dom";
-import Homepage from "./authentication/authentication/Homepage";
-import ChatPage from "./authentication/ChatPage";
+import { Route, Switch } from "react-router-dom";
 import Nav from "./components/Nav";
+import Homepage from "./pages/Homepage";
+import ChatPage from "./pages/ChatPage";
+import About from "./pages/About";
 import Header from "./components/Header";
 
 function App() {
   return (
-    <div className="App">
+    <div className="">
       <Nav />
-      <Header />
-      <Route path="/" component={Homepage} exact />
-      <Route path="/chats" component={ChatPage} />
+      {/* <Header /> */}
+      <Switch>
+        <Route path="/" component={Homepage} exact />
+        <Route path="/about" components={About} exact />
+        <Route path="/chats" components={ChatPage} />
+      </Switch>
     </div>
   );
 }
