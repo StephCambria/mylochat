@@ -6,9 +6,8 @@ import React from "react";
 function Nav() {
   return (
     <div class="topnav">
-      <a href="#About">About</a>
+      <a href="/about">About</a>
     </div>
   );
 }
 export default Nav;
- 
