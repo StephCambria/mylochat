@@ -4,7 +4,8 @@ import Nav from "./components/Nav";
 import Homepage from "./pages/Homepage";
 import ChatPage from "./pages/ChatPage";
 import About from "./pages/About";
-import Header from "./components/Header";
+// import Header from "./components/Header";
+// import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -13,9 +14,10 @@ function App() {
       {/* <Header /> */}
       <Switch>
         <Route path="/" component={Homepage} exact />
-        <Route path="/about" components={About} exact />
-        <Route path="/chats" components={ChatPage} />
+        <Route path="/about" component={About} exact />
+        <Route path="/chats" component={ChatPage} />
       </Switch>
+      {/* <Footer /> */}
     </div>
   );
 }

@@ -52,7 +52,7 @@ const About = () => {
             <li>Joyce Chen</li>
             <li>Caleb Lacson</li>
           </ol>
-          <h4>
+          <h4 align ="center">
             viewing our work. Please don't hesitate to contact us for any useful
             feedback.
           </h4>
