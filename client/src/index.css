@@ -1,14 +1,15 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+    sans-serif; */
+  font-family: Roboto;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
@@ -16,7 +17,7 @@ code {
 /* -------------------------------------------------------- */
 /* Add a black background color to the top navigation */
 .topnav {
-  background-color: whitesmoke;
+  background-color: rgb(20, 15, 15);
   overflow: hidden;
 }
 
@@ -24,7 +25,7 @@ code {
 .topnav a {
   float: right;
   color: darkgreen;
-  background-color: #efe0d8;
+  background-color: #d1c8c3;
   text-align: center;
   padding: 10px 15px;
   text-decoration: none;
@@ -41,7 +42,7 @@ code {
 
 /* Add a color to the active/current link */
 .topnav a.active {
-  background-color: #04AA6D;
+  background-color: #04aa6d;
   color: hsl(43, 81%, 65%);
 }
 
@@ -77,3 +78,205 @@ code {
 .hero-btn{
 align-content: right;
 } */
+
+/* Footer Container */
+.footer-distributed {
+  background: rgb(107, 158, 124);
+  box-shadow: 0 1px 1px 0 rgba(93, 54, 54, 0.12);
+  box-sizing: border-box;
+  width: 100%;
+  font: bold 16px sans-serif;
+  text-align: left;
+  padding: 50px 60px 40px;
+  overflow: hidden;
+}
+
+section {
+  width: 100%;
+  display: inline-block;
+  background: #ccc;
+  height: 60vh;
+  text-align: center;
+  font-size: 22px;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+/* Footer left */
+.footer-distributed .footer-left {
+  float: left;
+}
+
+/* The Footer Name (Mylo) */
+.footer-distributed h3 {
+  color: #ffffff;
+  font: normal 36px "Roboto", cursive;
+  margin: 0 0 10px;
+}
+/* The Footer Name (Chat) */
+.footer-distributed h3 span {
+  color: #163771;
+}
+
+/* Footer Links (Home/About/Contact) */
+.footer-distributed .footer-links {
+  color: #ffffff;
+  margin: 0 0 10px;
+  padding: 0;
+}
+.footer-distributed .footer-links a {
+  display: inline-block;
+  line-height: 1.8;
+  text-decoration: none;
+  color: inherit;
+}
+/* Footer (MyloChat Inc.)*/
+.footer-distributed .footer-company-name {
+  color: #ffffff;
+  font-size: 20px;
+  font-weight:bolder;
+  margin: 0;
+}
+
+/* Footer social icons */
+.footer-distributed .footer-icons {
+  margin-top: 40px;
+}
+
+/* Footer social icons (GitGub)*/
+.footer-distributed .footer-icons a {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  background-color:#ffffff;
+  border-radius: 15px;
+  font-size: 10px;    
+  /* color: #181616; */
+  text-align: center;
+  line-height: 35px;
+  margin-right: 3px;
+  margin-bottom: 5px;
+}
+
+/* Footer Right */
+.footer-distributed .footer-right {
+  float: right;
+}
+
+.footer-distributed .footer-right p {
+  display: inline-block;
+  vertical-align: top;
+  margin: 15px 42px 0 0;
+  color: #ffffff;
+  font-size: 30px;
+}
+
+/* The contact form */
+
+.footer-distributed form {
+  display: inline-block;
+  
+}
+
+.footer-distributed form input,
+.footer-distributed form textarea {
+  display: block;
+  border-radius: 3px;
+  box-sizing: border-box;
+  background-color: whitesmoke;
+  box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.1);
+  border: none;
+  resize: none;
+
+  font: inherit;
+  font-size: 14px;
+  font-weight: normal;
+  color: #d1d2d2;
+
+  width: 400px;
+  padding: 18px;
+}
+
+.footer-distributed ::-webkit-input-placeholder {
+  color: #5c666b;
+}
+
+.footer-distributed ::-moz-placeholder {
+  color: #5c666b;
+  opacity: 1;
+}
+
+.footer-distributed :-ms-input-placeholder {
+  color: #5c666b;
+}
+
+.footer-distributed form input {
+  height: 55px;
+  margin-bottom: 15px;
+}
+
+.footer-distributed form textarea {
+  height: 100px;
+  margin-bottom: 20px;
+}
+
+.footer-distributed form button {
+  border-radius: 3px;
+  background-color: #33383b;
+  color: #ffffff;
+  border: 0;
+  padding: 15px 50px;
+  font-weight: bold;
+  float: right;
+}
+
+/* Media Queries for Responsive Design*/ 
+
+@media (max-width: 1000px) {
+  .footer-distributed {
+    font: bold 14px sans-serif;
+  }
+
+  .footer-distributed .footer-company-name {
+    font-size: 12px;
+  }
+
+  .footer-distributed form input,
+  .footer-distributed form textarea {
+    width: 250px;
+  }
+
+  .footer-distributed form button {
+    padding: 10px 35px;
+  }
+}
+
+@media (max-width: 800px) {
+  .footer-distributed {
+    padding: 30px;
+  }
+
+  .footer-distributed .footer-left,
+  .footer-distributed .footer-right {
+    float: none;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  .footer-distributed .footer-left {
+    margin-bottom: 40px;
+  }
+
+  .footer-distributed form {
+    margin-top: 30px;
+  }
+
+  .footer-distributed form {
+    display: block;
+  }
+
+  .footer-distributed form button {
+    float: none;
+  }
+}

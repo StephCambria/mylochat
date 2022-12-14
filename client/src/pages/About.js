@@ -1,4 +1,6 @@
 import React from "react";
+import Footer from "../components/Footer";
+
 import {
   Center,
   HStack,
@@ -28,36 +30,47 @@ const About = () => {
           borderWidth="1px"
         >
           <HStack spacing="-20px">
-            <Text as="b" fontSize="4xl" fontFamily="Work Sans" color="gray.200">
-              Mylo
-            </Text>
+            {/* <Text as="b" fontSize="4xl" fontFamily="Work Sans" color="gray.200">
+              
+            </Text> */}
             <Image
               align="50% 50%"
-              src={require("../image/hero-mylo.png")}
+              src={require("../image/hero.png")}
               alt="Mylo mascot image"
             />
-            <Text as="b" fontSize="4xl" fontFamily="Work Sans" color="gray.200">
-              Chat
-            </Text>
           </HStack>
         </Center>
         <Box bg="white" w="100%" p={4} borderRadius="lg" borderWidth="1px">
+          <h3 align="center">
+            MyloChat is a chat messaging application designed with a love for
+            furry felines in mind.
+          </h3>
+          <br />
           <h1>
-            We are Group 5 students who created this full - stack message
-            application for our final project.
+            <strong>WHO</strong>
           </h1>
-          <ol>
-            <li>Stephanie Cambria</li>
-            <li>Tyler Porter</li>
-            <li>Joyce Chen</li>
-            <li>Caleb Lacson</li>
-          </ol>
-          <h4 align ="center">
-            viewing our work. Please don't hesitate to contact us for any useful
-            feedback.
+          <h1>
+            <strong>WE</strong>
+          </h1>
+          <h1>
+            <strong>ARE</strong>
+          </h1>
+          <br />
+          <h1>
+            We are peopel who lovecreated this full - stack message application
+            for our final project.
+          </h1>
+          <br />
+          <h1>Stephanie Cambria | Tyler Porter | Joyce Chen | Caleb Lacson</h1>
+
+          <br />
+          <h4 align="center">
+            Thanks for viewing our work. Please don't hesitate to contact us for
+            any useful feedback.
           </h4>
         </Box>
       </Container>
+      <Footer />
     </div>
   );
 };

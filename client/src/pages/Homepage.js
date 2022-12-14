@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import Footer from "../components/Footer";
 // import HeroImage from "../image/hero-mylo.png",
 import {
   Center,
@@ -79,7 +80,9 @@ const Homepage = () => {
           </TabPanels>
         </Tabs>
       </Box>
+      <Footer />
     </Container>
+    
   );
 };
 
