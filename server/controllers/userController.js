@@ -2,7 +2,6 @@ const asyncHandler = require("express-async-handler");
 const User = require("../models/User");
 const generateToken = require("../config/generateToken");
 
-
 // ==========================================================
 // ==========================================================
 // Sign Up Functionality
@@ -49,21 +48,22 @@ const registerUser = asyncHandler(async () => {
 // ==========================================================
 
 const authUser = asyncHandler(async (req, res) => {
-    const { email, password } = req.body;
+  const { email, password } = req.body;
 
-    const user = await User.findOne({ email });
+  const user = await User.findOne({ email });
 
-    if (user && (await user.matchPassword(password))) {
-        res.json({
-            _id: user._id,
-            name: user.name,
-            email: user.email,
-            token: generateToken(user._id),
-        });
-    } else {
-        res.status(401);
-        throw new err("Invalid email or password");
-    }
+  if (user && (await user.matchPassword(password))) {
+    res.json({
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+      token: generateToken(user._id),
+    });
+  } else {
+    res.status(401);
+    res.statusMessage = "Invalid email or password";
+    res.send();
+  }
 });
 
 // ==========================================================
@@ -74,14 +74,15 @@ const authUser = asyncHandler(async (req, res) => {
 
 // /api/user?search= ${name} or ${email}
 const allUsers = asyncHandler(async (req, res) => {
-  const keyword = req.query.search ? {
-    // Mongoose $or operator specifies what we can search for
-    $or: [
-      { name: { $regex: req.query.search, $options: "i" }}, // Using a regex to query name search
-      { email: { $regex: req.query.search, $options: "i"}}, // Using a regex to query email search
-    ],
-  }
-  : {};
-})
+  const keyword = req.query.search
+    ? {
+        // Mongoose $or operator specifies what we can search for
+        $or: [
+          { name: { $regex: req.query.search, $options: "i" } }, // Using a regex to query name search
+          { email: { $regex: req.query.search, $options: "i" } }, // Using a regex to query email search
+        ],
+      }
+    : {};
+});
 
-module.exports = { registerUser, authUser };
+module.exports = { registerUser, authUser, allUsers };

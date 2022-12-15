@@ -2,10 +2,9 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const connectDB = require("./config/connection");
-const userRoutes = require("./routes/userRoutes");
-const chatRoutes = require("./routes/chatRoutes");
-const messageRoutes = require("./routes/messageRoutes");
+const messageRoutes = require("./routes/api/messageRoutes");
 const { notFound, errorHandler } = require("./middleware/errorMiddleware");
+const routes = require("./routes");
 
 // Create an instance of express
 const app = express();
@@ -13,19 +12,18 @@ dotenv.config();
 connectDB();
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // ==========================================================
 // Routing
 // ==========================================================
-app.use(userRoutes);
-app.use(chatRoutes);
-app.use(messageRoutes);
+app.use(routes);
 // ==========================================================
 
-app.use(notFound);
-app.use(errorHandler);
+//app.use(notFound);
+//app.use(errorHandler);
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 
 // Use app.listen() as an object we can pass through socket.io
 const server = app.listen(PORT, () => {
@@ -50,7 +48,7 @@ io.on("connection", (socket) => {
 
   // Connect user to their personal web socket upon loading the app
   socket.on("setup", (userData) => {
-    socket.join(userData._id);
+    socket.join(userData?._id);
     socket.emit("connected");
   });
 
