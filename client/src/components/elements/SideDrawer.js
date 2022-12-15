@@ -7,7 +7,6 @@ import {
   Menu,
   MenuButton,
   Stack,
-  MenuList,
   Drawer,
   useDisclosure,
   DrawerOverlay,
@@ -76,12 +75,12 @@ const SideDrawer = () => {
 
       const config = {
         Headers: {
-          //Authorization: `Bearer ${user.token}`,
+          Authorization: `Bearer ${user.token}`,
         },
       };
       const { data } = await axios.get(`/api/user?search=${search}`, config);
       setLoading(false);
-      setSearchResult(data);
+      setSearchResult([data]);
     } catch (error) {
       toast({
         title: "Error occured",
@@ -158,7 +157,6 @@ const SideDrawer = () => {
               <MenuButton p={1}>
                 <EmailIcon fontSize="2xl" m={1} />
               </MenuButton>
-              {/*<MenuList></MenuList>*/}
             </Menu>
             <Button onClick={logoutHandler}>Logout</Button>
           </div>
@@ -185,9 +183,9 @@ const SideDrawer = () => {
             {loading ? (
               <Loading />
             ) : (
-              searchResult?.map((user) => (
+              searchResult?.map((user, id) => (
                 <UserListItem
-                  key={user._id}
+                  key={id}
                   user={user}
                   handleFunction={() => accessChat(user._id)}
                 />
