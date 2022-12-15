@@ -91,7 +91,10 @@ code {
 
 /* Each Team Profile Wrapped in the Card (Title Name) */
 .title {
-  color: red;
+  color: rgb(123, 131, 90);
+  padding: 5px 5px;
+  font-style: italic;
+  font-weight: bold;
 }
 
 /* GitHub Link Wrapped in the Card */
@@ -171,6 +174,25 @@ code {
 .footer-distributed .footer-icons {
   margin-top: 30px;
 }
+
+/* Footer (Legal Terms)*/
+/* .footer.legal-terms {
+  margin: 50px;
+} */
+
 /* Saved for later (GitHub Anchor Tag) */
 /* .footer-distributed .footer-icons a {
   } */
+
+/* Our Team Section (Profile Image Icon)*/
+.profile-holder {
+  border: 3px;
+  outline: 0;
+  display: inline-block;
+  padding: 18px;
+  margin-bottom: 20px;
+  background-color: rgb(107, 158, 124);
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+}

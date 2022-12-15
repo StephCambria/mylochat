@@ -1,25 +1,32 @@
 import React from "react";
-import Footer from "../components/Footer";
-
 import {
-  Center,
-  Stack,
-  HStack,
-  Container,
-  ButtonGroup,
-  IconButton,
   Box,
+  ButtonGroup,
+  Center,
+  Container,
+  Grid,
+  GridItem,
+  Heading,
+  IconButton,
   Image,
+  Text,
 } from "@chakra-ui/react";
 import { FaGithub } from "react-icons/fa";
+import Footer from "../components/Footer";
 
+// ==========================================================
+// ==========================================================
+// About Page
+// ==========================================================
+// ==========================================================
 const About = () => {
   return (
     <div>
       <Container maxW="xl" centerContent>
+        {/* -------------------------------------------------------- */}
+        {/* ----------------------- Header ------------------------- */}
+        {/* -------------------------------------------------------- */}
         <Center
-          d="flex"
-          justifyContent="center"
           p={3}
           bg={"#8BAD94"}
           w="100%"
@@ -27,20 +34,54 @@ const About = () => {
           borderRadius="lg"
           borderWidth="1px"
         >
-          <HStack spacing="-20px">
-            {/* <Text as="b" fontSize="4xl" fontFamily="Work Sans" color="gray.200">
-              
-            </Text> */}
-            <Image
-              align="50% 50%"
-              src={require("../image/hero.png")}
-              alt="Mylo mascot image"
-            />
-          </HStack>
+          <Image
+            align="50% 50%"
+            src={require("../image/hero.png")}
+            alt="Mylo mascot image"
+          />
         </Center>
-        {/* --------------------------------------------------------  */}
-        {/* About US Section */}
-        <Box bg="white" w="100%" p={4} borderRadius="lg" borderWidth="1px">
+
+        {/* -------------------------------------------------------- */}
+        {/* ---------------------- Our Mission -------------------- */}
+        {/* -------------------------------------------------------- */}
+
+        <Box
+          bg="#474e5d"
+          w="100%"
+          p="15px 0 5px 0"
+          m="15px 0 15px 0"
+          borderRadius="lg"
+          borderWidth="1px"
+        >
+          <div class="about-section" align="left">
+            <h1>
+              <strong>Our Mission</strong>
+            </h1>
+            <br />
+            <p>
+              <strong>MyloChat</strong> was inspired by Bobby’s homeless cat —
+              Our mission is to spread awareness about animals that are
+              endangered, neglected, mistreated, in need of food and medical
+              care, or otherwise without homes A Free chat service; Donations
+              are welcomed — 100% of all funds not used to pay for the chat
+              service are donated to animal shelters, endangered animal
+              conservation,
+            </p>
+          </div>
+        </Box>
+
+        {/* -------------------------------------------------------- */}
+        {/* ----------------------- About Us ----------------------- */}
+        {/* -------------------------------------------------------- */}
+
+        <Box
+          bg="#474e5d"
+          w="100%"
+          p="15px 0 15px 0"
+          m="15px 0 15px 0"
+          borderRadius="lg"
+          borderWidth="1px"
+        >
           <div class="about-section" align="left">
             <h1>
               <strong>About Us</strong>
@@ -52,152 +93,154 @@ const About = () => {
               find your Mylo to start a converstaion!
             </p>
           </div>
-          {/* --------------------------------------------------------  */}
-          {/* Our Mission Section */}
-          <div class="about-section" align="left">
-            <h1>
-              <strong>Our Mission</strong>
-            </h1>
-            <br />
-            <p>
-              <strong>MyloChat</strong> It was something like Inspired by
-              Bobby’s homeless cat — To spread awareness about animals that are
-              endangered, neglected, mistreated, in need of food and medical
-              care, or otherwise without homes A Free chat service; Donations
-              are welcomed — 100% of all funds not used to pay for the chat
-              service are donated to animal shelters, endangered animal
-              conservation,
-            </p>
-          </div>
-          {/* -------------------------------------------------------- */}
-          <h1 align="center">
-            <strong>Our Team</strong>
-          </h1>
-          <div>
-            <div className="row">
-              <div className="column">
-                <div className="card">
-                  {/* <img src="../image/hero-mylo.png" alt="Jane" style="width:100%"/> */}
-                  <div className="container">
-                    <h2>Steph Cambria</h2>
-                    <p className="title">Back-End</p>
-                    {/* <p>jane@example.com</p> */}
-                    <p>
-                      <Center
-                        justify="space-between"
-                        direction="row"
-                        align="center"
-                      >
-                        <ButtonGroup variant="ghost">
-                          <IconButton
-                            as="a"
-                            href="https://github.com/StephCambria/message-app-prototype"
-                            aria-label="GitHub"
-                            icon={<FaGithub fontSize="1.6rem" />}
-                          />
-                        </ButtonGroup>
-                      </Center>
-                    </p>
-                  </div>
-                </div>
-              </div>
-              {/* -------------------------------------------------------- */}
-              <div className="column">
-                <div className="card">
-                  {/* <img src="../image/hero-mylo.png" alt="Jane" style="width:100%"/> */}
-                  <div className="container">
-                    <h2>Tyler Porter</h2>
-                    <p className="title">Back-End</p>
-                    {/* <p>jane@example.com</p> */}
-                    <p>
-                      <Center
-                        justify="space-between"
-                        direction="row"
-                        align="center"
-                      >
-                        <ButtonGroup variant="ghost">
-                          <IconButton
-                            as="a"
-                            href="https://github.com/Mykneeisonfire"
-                            aria-label="GitHub"
-                            icon={<FaGithub fontSize="1.6rem" />}
-                          />
-                        </ButtonGroup>
-                      </Center>
-                    </p>
-                  </div>
-                </div>
-                <br />
-              </div>
-            </div>
-            {/* -------------------------------------------------------- */}
-            <div className="row">
-              <div className="column">
-                <div className="card">
-                  {/* <img src="../image/hero-mylo.png" alt="Jane" style="width:100%"/> */}
-                  <div className="container">
-                    <h2>Joyce Chen</h2>
-                    <p className="title">Front-End</p>
-                    {/* <p>jane@example.com</p> */}
-                    <p>
-                      <Center
-                        justify="space-between"
-                        direction="row"
-                        align="center"
-                      >
-                        <ButtonGroup variant="ghost">
-                          <IconButton
-                            as="a"
-                            href="https://github.com/Joyce750526"
-                            aria-label="GitHub"
-                            icon={<FaGithub fontSize="1.6rem" />}
-                          />
-                        </ButtonGroup>
-                      </Center>
-                    </p>
-                  </div>
-                </div>
-              </div>
-              {/* -------------------------------------------------------- */}
-              <div className="column">
-                <div className="card">
-                  {/* <img src="../image/hero-mylo.png" alt="Jane" style="width:100%"/> */}
-                  <div className="container">
-                    <h2>Caleb Lacson</h2>
-                    <p className="title">Front-End</p>
-                    {/* <p>jane@example.com</p> */}
-                    <p>
-                      <Center
-                        justify="space-between"
-                        direction="row"
-                        align="center"
-                      >
-                        <ButtonGroup variant="ghost">
-                          <IconButton
-                            as="a"
-                            href="https://github.com/clacson95"
-                            aria-label="GitHub"
-                            icon={<FaGithub fontSize="1.6rem" />}
-                          />
-                        </ButtonGroup>
-                      </Center>
-                    </p>
-                  </div>
-                </div>
-                <br />
-              </div>
-            </div>
-          </div>
+        </Box>
+
+        {/* -------------------------------------------------------- */}
+        {/* ------------------- Team Member Cards ------------------ */}
+        {/* -------------------------------------------------------- */}
+
+        <Box
+          bg="white"
+          w="100%"
+          p={4}
+          m="20px 0 15px 0"
+          borderRadius="lg"
+          borderWidth="1px"
+          textAlign="center"
+        >
+          <Grid
+            templateRows="repeat(2, 1fr)"
+            templateColumns="repeat(2, 1fr)"
+            gap={6}
+          >
+            {/* ------------------- Stephanie Cambria ------------------ */}
+            <GridItem
+              bg="white"
+              p="4"
+              borderRadius="lg"
+              borderWidth="1px"
+              textAlign="center"
+            >
+              <Box className="profile-holder">
+                {" "}
+                <Image
+                  align="50% 50%"
+                  src={require("../image/hero-mylo.png")}
+                  alt="Mylo mascot image"
+                />
+              </Box>
+              <Heading size="md">Stephanie Cambria</Heading>
+
+              <Text className="title">Role | Back-End</Text>
+              <Center justify="space-between" direction="row" align="center">
+                <ButtonGroup variant="ghost">
+                  <IconButton
+                    as="a"
+                    href="https://github.com/StephCambria"
+                    aria-label="GitHub"
+                    icon={<FaGithub fontSize="1.8rem" />}
+                  />
+                </ButtonGroup>
+              </Center>
+            </GridItem>
+            {/* --------------------- Tyler Porter --------------------- */}
+            <GridItem
+              bg="white"
+              p="4"
+              borderRadius="lg"
+              borderWidth="1px"
+              textAlign="center"
+            >
+              <Box className="profile-holder">
+                {" "}
+                <Image
+                  align="50% 50%"
+                  src={require("../image/hero-mylo.png")}
+                  alt="Mylo mascot image"
+                />
+              </Box>
+              <Heading size="md">Tyler Porter</Heading>
+
+              <Text className="title">Role | Back-End</Text>
+              <Center justify="space-between" direction="row" align="center">
+                <ButtonGroup variant="ghost">
+                  <IconButton
+                    as="a"
+                    href="https://github.com/Mykneeisonfire"
+                    aria-label="GitHub"
+                    icon={<FaGithub fontSize="1.8rem" />}
+                  />
+                </ButtonGroup>
+              </Center>
+            </GridItem>
+            {/* ----------------------  Joyce Chen --------------------- */}
+            <GridItem
+              bg="white"
+              p="4"
+              borderRadius="lg"
+              borderWidth="1px"
+              textAlign="center"
+            >
+              <Box className="profile-holder">
+                {" "}
+                <Image
+                  align="50% 50%"
+                  src={require("../image/hero-mylo.png")}
+                  alt="Mylo mascot image"
+                />
+              </Box>
+              <Heading size="md">Joyce Chen</Heading>
+
+              <Text className="title">Role | Front-End</Text>
+              <Center justify="space-between" direction="row" align="center">
+                <ButtonGroup variant="ghost">
+                  <IconButton
+                    as="a"
+                    href="https://github.com/Joyce750526"
+                    aria-label="GitHub"
+                    icon={<FaGithub fontSize="1.8rem" />}
+                  />
+                </ButtonGroup>
+              </Center>
+            </GridItem>
+            {/* --------------------- Caleb Lacson --------------------- */}
+            <GridItem
+              bg="white"
+              p="4"
+              borderRadius="lg"
+              borderWidth="1px"
+              textAlign="center"
+            >
+              <Box className="profile-holder">
+                {" "}
+                <Image
+                  align="50% 50%"
+                  src={require("../image/hero-mylo.png")}
+                  alt="Mylo mascot image"
+                />
+              </Box>
+              <Heading size="md">Caleb Lacson</Heading>
+
+              <Text className="title">Role | Front-End</Text>
+              <Center justify="space-between" direction="row" align="center">
+                <ButtonGroup variant="ghost">
+                  <IconButton
+                    as="a"
+                    href="https://github.com/clacson95"
+                    aria-label="GitHub"
+                    icon={<FaGithub fontSize="1.8rem" />}
+                  />
+                </ButtonGroup>
+              </Center>
+            </GridItem>
+          </Grid>
         </Box>
       </Container>
-      <Footer />
+      <Box>
+        <Footer />
+      </Box>
     </div>
   );
 };
-export default About;
 
-// Saved Texts for later
-// <h1>Stephanie Cambria | Tyler Porter | Joyce Chen | Caleb Lacson</h1>
-// <h4>Thanks for viewing our work. Please don't hesitate to contact us for
-// any useful feedback.
-// </h4>
+export default About;

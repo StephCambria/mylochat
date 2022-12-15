@@ -1,68 +1,56 @@
 import React from "react";
 import {
-  Center,
-  Stack,
-  HStack,
-  Container,
-  ButtonGroup,
-  IconButton,
   Box,
+  ButtonGroup,
+  Container,
+  IconButton,
   Image,
+  Stack,
+  Text,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import { FaGithub } from "react-icons/fa";
 
-const Footer = () => {
+const Logo = () => {
   return (
-    <div class="footer-distributed">
-      <HStack class="footer-left">
-        <h3>
-          Mylo<span>Chat</span>
-        </h3>
-        <p class="footer-links">
-          <a href="/about">About</a> |
-          <a href="/contact">Contact</a>
-        </p>
+    <Image
+      viewBox="0 0 120 28"
+      align="50% 50%"
+      src={require("../image/footer.png")}
+      alt="Mylo logo image"
+    />
+  );
+};
 
-        <p class="footer-company-name">
-          MyloChat Inc. All rights reserved © 2022
-        </p>
-        {/* -------------------------------------------------------- */}
-        <div class="footer-icons">
-          {/* Anchor tag (GitHub) */}
-          {/* TODO: Need to replace this anchor tag to Heroku URL once we deployed */}
+const Footer = () => (
+  <Box bg="#6b9e7c" color={useColorModeValue("gray.700", "gray.200")}>
+    <Container
+      as={Stack}
+      maxW={"6xl"}
+      py={4}
+      direction={{ base: "column", md: "row" }}
+      spacing={4}
+      justify={{ base: "center", md: "space-between" }}
+      align={{ base: "center", md: "center" }}
+    >
+      <Logo />
+      <Text className="legal-terms" fontSize="lg" color="black">
+      © MyloChat Inc. 2022 | All rights reserved
+      </Text>
 
-          <Center
-            justify="space-between"
-            direction="row"
-            align="center"
-          >
-            <ButtonGroup variant="ghost">
-              <IconButton
-                as="a"
-                href="https://github.com/StephCambria/message-app-prototype"
-                aria-label="GitHub"
-                icon={<FaGithub fontSize="1.6rem" />}
-              />
-            </ButtonGroup>
-          </Center>
+      {/* Comment out GitHub Link for now, since we already include GitHub in our profile */}
+      {/* <Stack>
+        <ButtonGroup variant="ghost">
+          <IconButton
+            as="a"
+            href="https://github.com/StephCambria/message-app-prototype"
+            aria-label="GitHub"
+            icon={<FaGithub fontSize="2.5rem" />}
+          />
+        </ButtonGroup>
+      </Stack> */}
+    </Container>
+  </Box>
+);
 
-        </div>
-      </HStack>
-    </div>
-   );
- };
 export default Footer;
-
-
-
-/* CONTACT US */
-{/* <div class="footer-right"> */}
-  {/* <p>Contact Us</p>
-  Anchor tag (Email)
-  TODO: Commented out for now! */}
-  {/* <form action="#" method="post">
-    <input type="text" name="email" placeholder="Email" />
-    <textarea name="message" placeholder="Message"></textarea>
-    <button>Send</button>
-  </form>
-</div> */}
