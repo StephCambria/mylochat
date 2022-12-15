@@ -1,9 +1,9 @@
 import "./App.css";
 import { Route, Switch } from "react-router-dom";
 import Nav from "./components/Nav";
-import Homepage from "./pages/Homepage";
-import ChatPage from "./pages/ChatPage";
-import About from "./pages/About";
+import Homepage from "./Pages/Homepage";
+import ChatPage from "./Pages/ChatPage";
+import About from "./Pages/About";
 // import Header from "./components/Header";
 // import Footer from "./components/Footer";
 

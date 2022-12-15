@@ -38,6 +38,7 @@ const About = () => {
             />
           </HStack>
         </Center>
+        {/* --------------------------------------------------------  */}
         {/* About US Section */}
         <Box bg="white" w="100%" p={4} borderRadius="lg" borderWidth="1px">
           <div class="about-section" align="left">
@@ -49,6 +50,23 @@ const About = () => {
               <strong>MyloChat</strong> is a chat messaging APP designed with a
               love for furry felines in mind. We create a platform where you can
               find your Mylo to start a converstaion!
+            </p>
+          </div>
+          {/* --------------------------------------------------------  */}
+          {/* Our Mission Section */}
+          <div class="about-section" align="left">
+            <h1>
+              <strong>Our Mission</strong>
+            </h1>
+            <br />
+            <p>
+              <strong>MyloChat</strong> It was something like Inspired by
+              Bobby’s homeless cat — To spread awareness about animals that are
+              endangered, neglected, mistreated, in need of food and medical
+              care, or otherwise without homes A Free chat service; Donations
+              are welcomed — 100% of all funds not used to pay for the chat
+              service are donated to animal shelters, endangered animal
+              conservation,
             </p>
           </div>
           {/* -------------------------------------------------------- */}
@@ -177,10 +195,6 @@ const About = () => {
   );
 };
 export default About;
-
-
-
-
 
 // Saved Texts for later
 // <h1>Stephanie Cambria | Tyler Porter | Joyce Chen | Caleb Lacson</h1>
