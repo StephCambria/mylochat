@@ -3,17 +3,15 @@ import Footer from "../components/Footer";
 
 import {
   Center,
+  Stack,
   HStack,
   Container,
+  ButtonGroup,
+  IconButton,
   Box,
-  Text,
   Image,
-  Tab,
-  Tabs,
-  TabList,
-  TabPanel,
-  TabPanels,
 } from "@chakra-ui/react";
+import { FaGithub } from "react-icons/fa";
 
 const About = () => {
   return (
@@ -40,39 +38,152 @@ const About = () => {
             />
           </HStack>
         </Center>
+        {/* About US Section */}
         <Box bg="white" w="100%" p={4} borderRadius="lg" borderWidth="1px">
-          <h3 align="center">
-            MyloChat is a chat messaging application designed with a love for
-            furry felines in mind.
-          </h3>
-          <br />
-          <h1>
-            <strong>WHO</strong>
+          <div class="about-section" align="left">
+            <h1>
+              <strong>About Us</strong>
+            </h1>
+            <br />
+            <p>
+              <strong>MyloChat</strong> is a chat messaging APP designed with a
+              love for furry felines in mind. We create a platform where you can
+              find your Mylo to start a converstaion!
+            </p>
+          </div>
+          {/* -------------------------------------------------------- */}
+          <h1 align="center">
+            <strong>Our Team</strong>
           </h1>
-          <h1>
-            <strong>WE</strong>
-          </h1>
-          <h1>
-            <strong>ARE</strong>
-          </h1>
-          <br />
-          <h1>
-            We are peopel who lovecreated this full - stack message application
-            for our final project.
-          </h1>
-          <br />
-          <h1>Stephanie Cambria | Tyler Porter | Joyce Chen | Caleb Lacson</h1>
-
-          <br />
-          <h4 align="center">
-            Thanks for viewing our work. Please don't hesitate to contact us for
-            any useful feedback.
-          </h4>
+          <div>
+            <div className="row">
+              <div className="column">
+                <div className="card">
+                  {/* <img src="../image/hero-mylo.png" alt="Jane" style="width:100%"/> */}
+                  <div className="container">
+                    <h2>Steph Cambria</h2>
+                    <p className="title">Back-End</p>
+                    {/* <p>jane@example.com</p> */}
+                    <p>
+                      <Center
+                        justify="space-between"
+                        direction="row"
+                        align="center"
+                      >
+                        <ButtonGroup variant="ghost">
+                          <IconButton
+                            as="a"
+                            href="https://github.com/StephCambria/message-app-prototype"
+                            aria-label="GitHub"
+                            icon={<FaGithub fontSize="1.6rem" />}
+                          />
+                        </ButtonGroup>
+                      </Center>
+                    </p>
+                  </div>
+                </div>
+              </div>
+              {/* -------------------------------------------------------- */}
+              <div className="column">
+                <div className="card">
+                  {/* <img src="../image/hero-mylo.png" alt="Jane" style="width:100%"/> */}
+                  <div className="container">
+                    <h2>Tyler Porter</h2>
+                    <p className="title">Back-End</p>
+                    {/* <p>jane@example.com</p> */}
+                    <p>
+                      <Center
+                        justify="space-between"
+                        direction="row"
+                        align="center"
+                      >
+                        <ButtonGroup variant="ghost">
+                          <IconButton
+                            as="a"
+                            href="https://github.com/Mykneeisonfire"
+                            aria-label="GitHub"
+                            icon={<FaGithub fontSize="1.6rem" />}
+                          />
+                        </ButtonGroup>
+                      </Center>
+                    </p>
+                  </div>
+                </div>
+                <br />
+              </div>
+            </div>
+            {/* -------------------------------------------------------- */}
+            <div className="row">
+              <div className="column">
+                <div className="card">
+                  {/* <img src="../image/hero-mylo.png" alt="Jane" style="width:100%"/> */}
+                  <div className="container">
+                    <h2>Joyce Chen</h2>
+                    <p className="title">Front-End</p>
+                    {/* <p>jane@example.com</p> */}
+                    <p>
+                      <Center
+                        justify="space-between"
+                        direction="row"
+                        align="center"
+                      >
+                        <ButtonGroup variant="ghost">
+                          <IconButton
+                            as="a"
+                            href="https://github.com/Joyce750526"
+                            aria-label="GitHub"
+                            icon={<FaGithub fontSize="1.6rem" />}
+                          />
+                        </ButtonGroup>
+                      </Center>
+                    </p>
+                  </div>
+                </div>
+              </div>
+              {/* -------------------------------------------------------- */}
+              <div className="column">
+                <div className="card">
+                  {/* <img src="../image/hero-mylo.png" alt="Jane" style="width:100%"/> */}
+                  <div className="container">
+                    <h2>Caleb Lacson</h2>
+                    <p className="title">Front-End</p>
+                    {/* <p>jane@example.com</p> */}
+                    <p>
+                      <Center
+                        justify="space-between"
+                        direction="row"
+                        align="center"
+                      >
+                        <ButtonGroup variant="ghost">
+                          <IconButton
+                            as="a"
+                            href="https://github.com/clacson95"
+                            aria-label="GitHub"
+                            icon={<FaGithub fontSize="1.6rem" />}
+                          />
+                        </ButtonGroup>
+                      </Center>
+                    </p>
+                  </div>
+                </div>
+                <br />
+              </div>
+            </div>
+          </div>
         </Box>
       </Container>
       <Footer />
     </div>
   );
 };
-
 export default About;
+
+
+
+
+
+// Saved Texts for later
+// <h1>Stephanie Cambria | Tyler Porter | Joyce Chen | Caleb Lacson</h1>
+// <h4>Thanks for viewing our work. Please don't hesitate to contact us for
+// any useful feedback.
+// </h4>
