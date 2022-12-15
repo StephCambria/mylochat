@@ -4,6 +4,8 @@
   "proxy": "http://localhost:3000",
   "private": true,
   "dependencies": {
+    "@apollo/client": "^3.7.2",
+    "@apollo/server": "^4.2.2",
     "@chakra-ui/icons": "^2.0.13",
     "@chakra-ui/react": "^2.4.3",
     "@emotion/react": "^11.10.5",

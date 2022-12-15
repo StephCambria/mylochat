@@ -7,6 +7,19 @@ const chatRoutes = require("./routes/chatRoutes");
 const messageRoutes = require("./routes/messageRoutes");
 const { notFound, errorHandler } = require("./middleware/errorMiddleware");
 
+const path = require('path');
+
+//Apollo GraphQl
+const { ApolloServer } = require('apollo-server-express');
+const { typeDefs, resolvers } = require('./schemas');
+const { db } = require("./models/User");
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+});
+
+
+
 // Create an instance of express
 const app = express();
 dotenv.config();
@@ -24,6 +37,7 @@ app.use(messageRoutes);
 
 app.use(notFound);
 app.use(errorHandler);
+
 
 const PORT = process.env.PORT || 3000;
 
@@ -83,4 +97,18 @@ io.on("connection", (socket) => {
     });
   });
 });
-// ==========================================================
+
+//apollo server
+const startApolloServer = async (typeDefs, resolvers) => {
+  await server.start();
+  server.applyMiddleware({ app });
+
+  db.once('open', () => {
+    app.listen(PORT, () => {
+      console.log(`API server running on port ${PORT}!`);
+      console.log(`USE GraphQL at http://localhost:${PORT}${server.graphqlPath}`);
+    })
+  })
+};
+
+startApolloServer(typeDefs, resolvers);
