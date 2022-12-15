@@ -67,7 +67,7 @@ const Signup = () => {
     // ==========================================================
     try {
       const config = {
-        headers: {
+        Headers: {
           "Content-type": "application/json",
         },
       };
@@ -93,7 +93,7 @@ const Signup = () => {
     } catch (err) {
       toast({
         title: "An error has occured",
-        description: err.response.data.message,
+
         status: "error",
         duration: 5000,
         isClosable: true,

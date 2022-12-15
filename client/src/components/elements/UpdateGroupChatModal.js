@@ -18,7 +18,16 @@ import { InfoIcon } from "@chakra-ui/icons";
 import { ChatState } from "../../Context/chatProvider";
 import axios from "axios";
 
-const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain }) => {
+// ==========================================================
+// ==========================================================
+// Update Group Chat Functionality
+// ==========================================================
+// ==========================================================
+
+const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain, fetchMessages }) => {
+  // ==========================================================
+  // Use State Setup
+  // ==========================================================
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [search, setSearch] = useState("");
   const [searchResult, setSearchResult] = useState([]);
@@ -28,6 +37,9 @@ const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain }) => {
 
   const { selectedChat, setSelectedChat, user } = ChatState();
 
+  // ==========================================================
+  // Search for users
+  // ==========================================================
   const handleSearch = async (query) => {
     setSearch(query);
     if (!query) {
@@ -56,6 +68,9 @@ const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain }) => {
     }
   };
 
+  // ==========================================================
+  // Add user to group
+  // ==========================================================
   const handleAddUser = async (user1) => {
     if (selectedChat.users.find((u) => u._id === user1._id)) {
       toast({
@@ -108,6 +123,9 @@ const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain }) => {
     }
   };
 
+  // ==========================================================
+  // Remove user from group
+  // ==========================================================
   const handleRemove = async (user1) => {
     if (selectedChat.groupAdmin._id !== user._id && user1._id !== user._id) {
       toast({
@@ -136,6 +154,7 @@ const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain }) => {
       );
       user1._id === user._id ? setSelectedChat() : setSelectedChat(data);
       setFetchAgain(!fetchAgain);
+      fetchMessages();
       setLoading(false);
     } catch (error) {
       toast({
@@ -148,6 +167,10 @@ const UpdateGroupChatModal = ({ fetchAgain, setFetchAgain }) => {
       });
     }
   };
+
+  // ==========================================================
+  // Output
+  // ==========================================================
 
   return (
     <>
