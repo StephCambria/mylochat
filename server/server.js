@@ -2,8 +2,6 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const connectDB = require("./config/connection");
-const messageRoutes = require("./routes/api/messageRoutes");
-const { notFound, errorHandler } = require("./middleware/errorMiddleware");
 const routes = require("./routes");
 
 // Create an instance of express
@@ -19,9 +17,6 @@ app.use(express.urlencoded({ extended: true }));
 // ==========================================================
 app.use(routes);
 // ==========================================================
-
-//app.use(notFound);
-//app.use(errorHandler);
 
 const PORT = process.env.PORT || 3001;
 
