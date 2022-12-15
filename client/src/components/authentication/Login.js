@@ -59,7 +59,7 @@ const Login = () => {
         },
       };
       const { data } = await axios.post(
-        "/api/user/chats",
+        "/api/user/login",
         { email, password },
         config
       );
