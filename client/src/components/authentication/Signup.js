@@ -39,7 +39,9 @@ const Signup = () => {
   // ==========================================================
   // Submit Functionality
   // ==========================================================
-  const submitHandler = async () => {
+  const submitHandler = async (e) => {
+    e.preventDefault();
+
     if (!name || !email || !password || !confirmPassword) {
       toast({
         title: "Please fill in all fields",
@@ -72,7 +74,7 @@ const Signup = () => {
         },
       };
       const { data } = await axios.post(
-        "/api/user",
+        "/api/user/signup",
         { name, email, password },
         config
       );
