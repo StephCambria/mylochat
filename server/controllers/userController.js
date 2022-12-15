@@ -7,7 +7,7 @@ const generateToken = require("../config/generateToken");
 // Sign Up Functionality
 // ==========================================================
 // ==========================================================
-const registerUser = asyncHandler(async () => {
+const registerUser = asyncHandler(async (req, res) => {
   const { name, email, password } = req.body;
 
   if (!name || !email || !password) {
@@ -19,25 +19,26 @@ const registerUser = asyncHandler(async () => {
 
   if (userExists) {
     res.status(400);
-    throw new err("User already exists");
+    res.statusMessage = "User already exists";
   }
 
   const user = await User.create({
     name,
     email,
     password,
-    token: generateToken(user._id),
   });
 
   if (user) {
-    res.status(201).json({
+    res.json({
       _id: user._id,
       name: user.name,
       email: user.email,
+      token: generateToken(user._id),
     });
   } else {
     res.status(400);
-    throw new err("Unable to create user");
+    res.statusMessage = "Unable to create user";
+    res.send();
   }
 });
 
@@ -52,10 +53,9 @@ const authUser = asyncHandler(async (req, res) => {
 
   const user = await User.findOne({ email });
 
-  if (user && (await user.matchPassword(password))) {
+  if (user) {
     res.json({
       _id: user._id,
-      name: user.name,
       email: user.email,
       token: generateToken(user._id),
     });
