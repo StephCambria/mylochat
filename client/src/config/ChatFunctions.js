@@ -1,6 +1,19 @@
 // Miscellaneous chat functionality
-export const getSender = (loggedUser, users) => {
-  return users[0]._id === loggedUser._id ? users[1].name : users[0].name;
+export const isSameSenderFormat = (messages, m, i, userId) => {
+  if (
+    i < messages.length - 1 &&
+    messages[i + 1].sender._id === m.sender._id &&
+    messages[i].sender._id !== userId
+  )
+    return 33;
+  else if (
+    (i < messages.length - 1 &&
+      messages[i + 1].sender._id !== m.sender._id &&
+      messages[i].sender._id !== userId) ||
+    (i === messages.length - 1 && messages[i].sender._id !== userId)
+  )
+    return 0;
+  else return "auto";
 };
 
 export const isSameSender = (messages, m, i, userId) => {
@@ -20,23 +33,11 @@ export const isLastMessage = (messages, i, userId) => {
   );
 };
 
-export const isSameSenderFormat = (messages, m, i, userId) => {
-  if (
-    i < messages.length - 1 &&
-    messages[i + 1].sender._id === m.sender._id &&
-    messages[i].sender._id !== userId
-  )
-    return 33;
-  else if (
-    (i < messages.length - 1 &&
-      messages[i + 1].sender._id !== m.sender._id &&
-      messages[i].sender._id !== userId) ||
-    (i === messages.length - 1 && messages[i].sender._id !== userId)
-  )
-    return 0;
-  else return "auto";
+export const isSameUser = (messages, m, i) => {
+  return i > 0 && messages[i - 1].sender._id === m.sender._id;
 };
 
-export const isSameUser = (messages, m, i) => {
-    return i > 0 && messages[i - 1].sender._id === m.sender._id;
+export const getSender = (loggedUser) => {
+  let users = [];
+  return users[0] === loggedUser ? users[1] : users[0];
 };
