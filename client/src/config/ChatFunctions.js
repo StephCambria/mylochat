@@ -16,7 +16,7 @@ export const isSameSenderFormat = (messages, m, i, userId) => {
   else return "auto";
 };
 
-export const isSameSender = (messages, m, i, userId) => {
+export const isSameSender = (messages, m, i, _id, userId) => {
   return (
     i < messages.length - 1 &&
     (messages[i + 1].sender._id !== m.sender._id ||
