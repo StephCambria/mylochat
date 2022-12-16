@@ -9,12 +9,11 @@ import {
 import { ChatState } from "../Context/chatProvider";
 
 const ScrollableChat = ({ messages }) => {
-  const { user } = ChatState([]);
+  const { user } = ChatState();
   
   return (
-    <ScrollElement>
-      {messages &&
-        messages.map((m, i) => (
+    <ScrollElement
+      {...[...messages].map((m, i) => (
           <div style={{ display: "flex" }} key={m._id}>
             {(isSameSender(
               messages,
@@ -38,7 +37,7 @@ const ScrollableChat = ({ messages }) => {
             </span>
           </div>
         ))}
-    </ScrollElement>
+    />
   );
 };
 

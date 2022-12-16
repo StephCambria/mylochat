@@ -1,18 +1,15 @@
-import { Box, Button, Stack, useToast, Text } from "@chakra-ui/react";
+import { Box, Stack, useToast } from "@chakra-ui/react";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { ChatState } from "../Context/chatProvider";
-import { AddIcon } from "@chakra-ui/icons";
 import Loading from "./Loading";
-import { getSender } from "../config/ChatFunctions";
-import GroupChatModal from "./elements/GroupChatModal";
 
 // ==========================================================
 // Load chats and the users in them
 // ==========================================================
 const MyChats = ({ fetchAgain }) => {
   const [loggedUser, setLoggedUser] = useState();
-  const { selectedChat, setSelectedChat, user, chats, setChats } = ChatState([]);
+  const { selectedChat, setSelectedChat, user, chats, setChats } = ChatState();
 
   const toast = useToast();
 
@@ -43,6 +40,7 @@ const MyChats = ({ fetchAgain }) => {
 
   useEffect(() => {
     setLoggedUser(JSON.parse(localStorage.getItem("userInfo")));
+    console.log(loggedUser);
     allChats();
     // eslint-disable-next-line
   }, [fetchAgain]);
@@ -75,16 +73,6 @@ const MyChats = ({ fetchAgain }) => {
         alignItems="center"
       >
         My Chats
-        <GroupChatModal>
-          <Button
-            d="flex"
-            ml="5%"
-            fontSize={{ base: "17px", md: "10px", lg: "17px" }}
-            rightIcon={<AddIcon />}
-          >
-            New Group Chat
-          </Button>
-        </GroupChatModal>
       </Box>
 
       <Box
@@ -99,7 +87,7 @@ const MyChats = ({ fetchAgain }) => {
       >
         {chats ? (
           <Stack overflowY="scroll">
-            {chats.map((chat) => (
+            {[...chats].map((chat) => (
               <Box
                 onClick={() => setSelectedChat(chat)}
                 cursor="pointer"
@@ -110,11 +98,6 @@ const MyChats = ({ fetchAgain }) => {
                 borderRadius="lg"
                 key={chat._id}
               >
-                <Text>
-                  {!chat.isGroupChat
-                    ? getSender(loggedUser, chat.users)
-                    : chat.chatName}
-                </Text>
               </Box>
             ))}
           </Stack>
