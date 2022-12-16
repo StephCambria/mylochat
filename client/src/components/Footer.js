@@ -1,15 +1,13 @@
 import React from "react";
 import {
   Box,
-  ButtonGroup,
   Container,
-  IconButton,
   Image,
   Stack,
   Text,
   useColorModeValue,
 } from "@chakra-ui/react";
-import { FaGithub } from "react-icons/fa";
+
 
 const Logo = () => {
   return (
@@ -34,8 +32,8 @@ const Footer = () => (
       align={{ base: "center", md: "center" }}
     >
       <Logo />
-      <Text className="legal-terms" fontSize="lg" color="black">
-      © MyloChat Inc. 2022 | All rights reserved
+      <Text fontFamily="Roboto" fontStyle="bold" fontSize="lg" color="white">
+        © MyloChat Inc. 2022 | All rights reserved
       </Text>
 
       {/* Comment out GitHub Link for now, since we already include GitHub in our profile */}

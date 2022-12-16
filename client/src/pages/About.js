@@ -100,7 +100,7 @@ const About = () => {
         {/* -------------------------------------------------------- */}
 
         <Box
-          bg="white"
+          bg="#d1c8c3"
           w="100%"
           p={4}
           m="20px 0 15px 0"
@@ -131,7 +131,9 @@ const About = () => {
               </Box>
               <Heading size="md">Stephanie Cambria</Heading>
 
-              <Text className="title">Role | Back-End</Text>
+              <Text color="#bcb45e" fontSize="sm" padding="5px">
+                Back-End Developer
+              </Text>
               <Center justify="space-between" direction="row" align="center">
                 <ButtonGroup variant="ghost">
                   <IconButton
@@ -159,9 +161,12 @@ const About = () => {
                   alt="Mylo mascot image"
                 />
               </Box>
+              {/* --------------------- Tyler Porter --------------------- */}
               <Heading size="md">Tyler Porter</Heading>
 
-              <Text className="title">Role | Back-End</Text>
+              <Text color="#bcb45e" fontSize="sm" padding="5px">
+                BIG ASS Back-End Developer
+              </Text>
               <Center justify="space-between" direction="row" align="center">
                 <ButtonGroup variant="ghost">
                   <IconButton
@@ -191,7 +196,9 @@ const About = () => {
               </Box>
               <Heading size="md">Joyce Chen</Heading>
 
-              <Text className="title">Role | Front-End</Text>
+              <Text color="#bcb45e" fontSize="sm" padding="5px">
+                Front-End Developer
+              </Text>
               <Center justify="space-between" direction="row" align="center">
                 <ButtonGroup variant="ghost">
                   <IconButton
@@ -221,7 +228,9 @@ const About = () => {
               </Box>
               <Heading size="md">Caleb Lacson</Heading>
 
-              <Text className="title">Role | Front-End</Text>
+              <Text color="#bcb45e" fontSize="sm" padding="5px">
+                Front-End Developer
+              </Text>
               <Center justify="space-between" direction="row" align="center">
                 <ButtonGroup variant="ghost">
                   <IconButton

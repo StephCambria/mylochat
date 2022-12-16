@@ -22,9 +22,10 @@
 - [License and Badges](#license-and-badges)
 - [Purpose](#purpose)
 - [Installation](#installation)
-- [Demo Video](#demo-video)
+- [Techcologies Used](#techcologies-used)
 - [Screenshots](#screenshots)
-- [Deployed URL](#deployed-url)
+- [Demo Video](#demo-video)
+- [Deployed Heroku](#deployed-heroku)
 - [Questions](#questions)
 
 ---
@@ -60,12 +61,15 @@ To use this Backend Platform Application. Please refer the following steps.
 
 ---
 
-## Demo Video:
+## Techcologies Used
 
-**Click to watch**
-<br>
-<image align="center">
-[![MyloChat APP Demo Video](./client/src/image/hero.png)](https://www.youtube.com/embed/_aHlo8yAvg0)
+- `HTML`
+- `CSS`
+- `JavaScript`
+- `React.js`
+- `Chakra UI`
+- `GraphQL`
+- `Socket.io`
 
 ---
 
@@ -104,16 +108,29 @@ To use this Backend Platform Application. Please refer the following steps.
 
 ---
 
-## Deployed URL:
+## Demo Video:
 
-- [Heroku](https://github.com/Joyce750526/Social-Network-APP-with-MangoDB)
+**Click to watch**
+<br>
+<image align="center" height="auto" width="200" style="border-radius:50%">
+[![MyloChat APP Demo Video](./client/src/image/hero.png)](https://www.youtube.com/embed/_aHlo8yAvg0)
+
+<!-- <a href="https://www.youtube.com/embed/_aHlo8yAvg0"><img src="./client/src/image/hero.png" height="auto" width="500" style="border-radius:30%" align="center"></a> -->
+
+---
+
+## Deployed Heroku:
+
+**Click to watch**
+
+<a href="https://github.com/clacson95" title="video text"><img src="./client/src/image/heroku-mark-purple.png" width="30" height="30"></a>
 
 ---
 
 ## Questions:
 
-If you have any questions about this application, please contact us!
-<br>
+If you have any questions about this application, please contact us!<br>
+**Click to the icon to find us**
 
 <br>
 <h4><a href="https://github.com/StephCambria" title="video text"><img src="./client/src/image/github-mark-white.png" width="30" height="30"></a>Stephanie Cambria</h4>
@@ -128,4 +145,4 @@ If you have any questions about this application, please contact us!
 
 ---
 
-<p align= "center"> MyloChat • ＧＲＯＵＰ 5</p>
+<p align= "center"> MyloChat • ＧＲＯＵＰ 4</p>
