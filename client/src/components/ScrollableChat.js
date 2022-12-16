@@ -1,20 +1,26 @@
 import React from "react";
-import ScrollableFeed from "react-scroll";
-import { isLastMessage, isSameSender, isSameSenderFormat, isSameUser } from "../config/ChatFunctions";
+import { ScrollElement } from "react-scroll";
+import {
+  isLastMessage,
+  isSameSender,
+  isSameSenderFormat,
+  isSameUser,
+} from "../config/ChatFunctions";
 import { ChatState } from "../Context/chatProvider";
 
 const ScrollableChat = ({ messages }) => {
-  const { user } = ChatState();
+  const { user } = ChatState([]);
+  
   return (
-    <ScrollableFeed>
+    <ScrollElement>
       {messages &&
         messages.map((m, i) => (
           <div style={{ display: "flex" }} key={m._id}>
-            {isSameSender(
+            {(isSameSender(
               messages,
               m,
               i,
-              user._id || isLastMessage(messages, i, user._id)
+              user._id || isLastMessage(messages, i, user._id))
             )}
             <span
               style={{
@@ -28,11 +34,11 @@ const ScrollableChat = ({ messages }) => {
                 marginTop: isSameUser(messages, m, i, user._id) ? 3 : 10,
               }}
             >
-                {m.content}
+              {m.content}
             </span>
           </div>
         ))}
-    </ScrollableFeed>
+    </ScrollElement>
   );
 };
 
