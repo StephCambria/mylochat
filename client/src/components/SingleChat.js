@@ -12,13 +12,14 @@ import React, { useEffect, useState } from "react";
 import { ChatState } from "../Context/chatProvider";
 import axios from "axios";
 import "./style.css";
-import ScrollableChat from "./ScrollableChat";
+import TestRenderer from "react-test-renderer";
+//import ScrollableChat from "./ScrollableChat";
 import io from "socket.io-client";
 import Lottie from "lottie-react";
 import animationData from "../animations/typing.json";
 
 const ENDPOINT = "http://localhost:3001";
-var socket, selectedChatCompare;
+var socket;
 
 function SingleChat() {
   // ==========================================================
@@ -63,61 +64,6 @@ function SingleChat() {
   // Get Messages Functionality
   // ==========================================================
   // ==========================================================
-  const fetchMessages = async () => {
-    if (!selectedChat) {
-      return;
-    }
-
-    try {
-      const config = {
-        Headers: {
-          Authorization: `Bearer ${user.token}`,
-        },
-      };
-      setLoading(true);
-      const { data } = await axios.get(
-        `/api/message/${selectedChat._id}`,
-        config
-      );
-      setMessages(data);
-      setLoading(false);
-
-      // Socket.io
-      socket.emit("join chat", selectedChat._id);
-      // ==========================================================
-    } catch (error) {
-      toast({
-        title: "Error Occured",
-        description: "Unable to load messages",
-        status: "error",
-        duration: 5000,
-        isClosable: true,
-        position: "bottom",
-      });
-    }
-  };
-
-  useEffect(() => {
-    fetchMessages();
-    selectedChatCompare = selectedChat;
-    // eslint-disable-next-line
-  }, [selectedChat]);
-
-  // ==========================================================
-  // Socket for receiving a new message
-  // ==========================================================
-  useEffect(() => {
-    socket.on("message received", (newMessageReceived) => {
-      if (
-        !selectedChatCompare ||
-        selectedChatCompare._id !== newMessageReceived.chat._id
-      ) {
-        // send notification
-      } else {
-        setMessages([...messages, newMessageReceived]);
-      }
-    });
-  });
 
   // ==========================================================
   // ==========================================================
@@ -144,7 +90,11 @@ function SingleChat() {
           config
         );
         // Socket for sending a new message
-        socket.emit("new message", data);
+        socket.emit("chat message", function(data) {
+          const renderer = TestRenderer.create("li", data);
+          console.log(renderer)
+          window.scrollTo(0, document.body.scrollHeight);
+        });
         setMessages([...messages, data]);
         // ==========================================================
       } catch (error) {
@@ -233,9 +183,9 @@ function SingleChat() {
                 margin="auto"
               />
             ) : (
-              <div className="messages">
-                <ScrollableChat messages={messages} />
-              </div>
+              <Box className="messages" h="80%">
+                {messages}
+              </Box>
             )}
             <FormControl onKeyDown={sendMessage} isRequired mt={3}>
               {isTyping ? (
