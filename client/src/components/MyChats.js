@@ -7,7 +7,7 @@ import Loading from "./Loading";
 // ==========================================================
 // Load chats and the users in them
 // ==========================================================
-const MyChats = ({ fetchAgain }) => {
+const MyChats = () => {
   const [loggedUser, setLoggedUser] = useState();
   const { selectedChat, setSelectedChat, user, chats, setChats } = ChatState();
 
@@ -43,7 +43,7 @@ const MyChats = ({ fetchAgain }) => {
     console.log(loggedUser);
     allChats();
     // eslint-disable-next-line
-  }, [fetchAgain]);
+  }, []);
 
   // ==========================================================
   // Output

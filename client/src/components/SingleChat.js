@@ -10,8 +10,6 @@ import {
 } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { ChatState } from "../Context/chatProvider";
-import { getSender } from "../config/ChatFunctions";
-import UpdateGroupChatModal from "./elements/UpdateGroupChatModal";
 import axios from "axios";
 import "./style.css";
 import ScrollableChat from "./ScrollableChat";
@@ -22,13 +20,13 @@ import animationData from "../animations/typing.json";
 const ENDPOINT = "http://localhost:3001";
 var socket, selectedChatCompare;
 
-function SingleChat({ fetchAgain, setFetchAgain }) {
+function SingleChat() {
   // ==========================================================
   // Use State Setup
   // ==========================================================
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [newMessage, setNewMessage] = useState();
+  const [newMessage, setNewMessage] = useState("");
   const [socketConnected, setSocketConnected] = useState(false);
   const [typing, setTyping] = useState(false);
   const [isTyping, setIsTyping] = useState(false);
@@ -54,11 +52,11 @@ function SingleChat({ fetchAgain, setFetchAgain }) {
   // ==========================================================
   useEffect(() => {
     socket = io(ENDPOINT);
-    socket.emit("setup", user);
+    socket.emit("success", user);
     socket.on("connected", () => setSocketConnected(true));
     socket.on("typing", () => setIsTyping(true));
     socket.on("stop typing", () => setIsTyping(false));
-  }, []);
+  }, [user]);
 
   // ==========================================================
   // ==========================================================
@@ -102,6 +100,7 @@ function SingleChat({ fetchAgain, setFetchAgain }) {
   useEffect(() => {
     fetchMessages();
     selectedChatCompare = selectedChat;
+    // eslint-disable-next-line
   }, [selectedChat]);
 
   // ==========================================================
@@ -213,18 +212,6 @@ function SingleChat({ fetchAgain, setFetchAgain }) {
               icon={<ArrowBackIcon />}
               onClick={() => setSelectedChat("")}
             />
-            {!selectedChat.isGroupChat ? (
-              <>{getSender(user, selectedChat.users)}</>
-            ) : (
-              <>
-                {selectedChat.chatName.toUpperCase()}
-                <UpdateGroupChatModal
-                  fetchAgain={fetchAgain}
-                  setFetchAgain={setFetchAgain}
-                  fetchMessages={fetchMessages}
-                />
-              </>
-            )}
           </Text>
           <Box
             d="flex"
