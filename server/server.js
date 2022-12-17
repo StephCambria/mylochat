@@ -48,32 +48,15 @@ const io = require("socket.io")(server, {
 
 io.on("connection", (socket) => {
   console.log("connected to socket.io");
-  // Connect user to their personal web socket upon loading the app
-  socket.on("success", (user) => {
-    socket.join(user._id);
-    socket.emit("connected");
-  });
-
-  // Join chat
-  socket.on("join chat", (room) => {
-    socket.join(room);
-    console.log("User joined room " + room); // this is returning null
+  socket.on("chat message", msg => {
+    io.emit("chat message", msg);
   });
 
   // Typing
   socket.on("typing", (room) => socket.in(room).emit("typing"));
   socket.on("stop typing", (room) => socket.in(room).emit("stop typing"));
 
-  // New message
-  socket.on("new message", (newMessageReceived) => {
-    let chat = newMessageReceived.chat;
-    socket.in(chat).emit("message received", newMessageReceived);
   });
 
-  socket.off("setup", () => {
-    console.log("User Disconnected");
-    socket.leave(user._id);
-  });
-});
 
 // ==========================================================
