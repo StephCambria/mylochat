@@ -18,6 +18,14 @@ app.use(express.urlencoded({ extended: true }));
 app.use(routes);
 // ==========================================================
 
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "../client/build")));
+}
+
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "../client/build/index.html"));
+});
+
 const PORT = process.env.PORT || 3001;
 
 // Use app.listen() as an object we can pass through socket.io
@@ -40,17 +48,16 @@ const io = require("socket.io")(server, {
 
 io.on("connection", (socket) => {
   console.log("connected to socket.io");
-
   // Connect user to their personal web socket upon loading the app
-  socket.on("setup", (userData) => {
-    socket.join(userData?._id);
+  socket.on("success", (user) => {
+    socket.join(user._id);
     socket.emit("connected");
   });
 
   // Join chat
   socket.on("join chat", (room) => {
     socket.join(room);
-    console.log("User joined room " + room);
+    console.log("User joined room " + room); // this is returning null
   });
 
   // Typing
@@ -59,21 +66,14 @@ io.on("connection", (socket) => {
 
   // New message
   socket.on("new message", (newMessageReceived) => {
-    var chat = newMessageReceived.chat;
+    let chat = newMessageReceived.chat;
+    socket.in(chat).emit("message received", newMessageReceived);
+  });
 
-    // For debugging
-    if (!chat.users) return console.log("chat.users undefined");
-
-    chat.users.forEach((user) => {
-      if (user._id == newMessageReceived.sender._id) return;
-
-      socket.in(user._id).emit("message received", newMessageReceived);
-    });
-
-    socket.off("setup", () => {
-      console.log("User Disconnected");
-      socket.leave(userData._id);
-    });
+  socket.off("setup", () => {
+    console.log("User Disconnected");
+    socket.leave(user._id);
   });
 });
+
 // ==========================================================
