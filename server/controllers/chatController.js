@@ -16,7 +16,6 @@ const accessChat = asyncHandler(async (req, res) => {
   }
 
   let isChat = await Chat.find({
-    isGroupChat: false,
     $and: [
       {
         users: { $elementMatch: { $eq: req.user._id } },
@@ -72,7 +71,7 @@ const allChats = asyncHandler(async (req, res) => {
       .sort({ updatedAt: -1 })
       .then(async (results) => {
         results = await User.populate(results, {
-          path: "latestMessage",
+          path: "latestMessage.user",
           select: "name email",
         });
         res.status(200).send(results);
