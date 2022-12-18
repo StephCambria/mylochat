@@ -6,19 +6,16 @@ const userRoutes = require("./routes/userRoutes");
 const chatRoutes = require("./routes/chatRoutes");
 const messageRoutes = require("./routes/messageRoutes");
 const { notFound, errorHandler } = require("./middleware/errorMiddleware");
-
 const path = require('path');
 
 //Apollo GraphQl
-const { ApolloServer } = require('apollo-server-express');
+const { ApolloServer, gql } = require('apollo-server-express');
 const { typeDefs, resolvers } = require('./schemas');
-const { db } = require("./models/User");
+const { db } = require("./config/connection");
 const server = new ApolloServer({
   typeDefs,
   resolvers,
 });
-
-
 
 // Create an instance of express
 const app = express();
