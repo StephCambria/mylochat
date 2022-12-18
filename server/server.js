@@ -48,8 +48,8 @@ const io = require("socket.io")(server, {
 
 io.on("connection", (socket) => {
   console.log("connected to socket.io");
-  socket.on("chat message", msg => {
-    io.emit("chat message", msg);
+  socket.on("chat message", message => {
+    io.emit("chat message", message);
   });
 
   // Typing
