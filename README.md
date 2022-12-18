@@ -32,32 +32,54 @@
 
 ## Purpose:
 
-To create this Backend API application called `Social Network APP` to help social network site to build from scratch. `Express` to handle all of the routes, `MongoDB` to handle its database, `Mongoose ODM` to connect the database to the server while using `Moment.js` to format dates and timestamps. Importantly, using `Insomnia` as a Backend platform to test RESTful applications by creating the following routes to the desired functions of viewing and updating database.
+`MyloChat was originally inspired of homeless cats!!!`
 
-- `GET`
-- `POST`
-- `PUT`
-- `DELETE`
+To create this messaging application called `MyloChat.` Our mission is to create a non-profitable platform to spread awareness to animal lovers about animals that are endangered, neglected, mistreated, in need of food and medical care, or otherwise without homes A Free chat service.
+
+**Features:**
+
+- `Signup`
+- `Logon`
+- `Create a chat`
+- `Delete a chat`
+- `Donation`: This feature will be in our future development.
 
 ---
 
 ## Installation:
 
-To use this Backend Platform Application. Please refer the following steps.
+To use `MyloChat` Application. Please refer the following options.
 
-1. You need to clone this package in your computer, and open in VS Code.
+---
+***Option A***
 
-2. You need to run `npm install` in the terminal first to get all necessary dependencies. See below:
+You can skip the installation (Option B), and simply visit our `MyloChat website` to try this messaging App in your browser.
 
-- Use `npm install mongoose@6.7.2` to install `Mongoose`
-- Use `npm install express@4.18.2` to install `Express.js`
-- Use `npm install moment@2.29.4` to install `Moment.js`
+---
 
-3. Run `mysql -u root -p` to start MySQL database and enter your MySQL password!
+***Option B***
 
-4. Open `index.js` in your VS Code terminal and run `node index.js` to start this Social Network APP!
+1. Open [`This Link`](https://github.com/StephCambria/message-app-prototype) in your browser and clone this package in your computer and open in the VS Code.
 
-5. You can easily operate/ test this application in Insomnia.
+2. Open your `package.json` from the root folder in the terminal, and run `npm i`
+
+3. You still need to follow the steps below to start/ finish the process before installation.
+
+<h3>"scripts"</h3>: {
+
+  1. **"start"**: `"node server/server.js --ignore client",`
+
+  2. **"develop"**: `concurrently \"cd server && npm run watch\" \"cd client && npm start\,`
+
+  3. **"install"**: `"cd server && npm i && cd ../client && npm i",`
+
+  4. **"seed"** : `"cd server && npm run seed"`
+
+  5. **"build"**: `"cd client && npm run build",`
+
+  }
+
+6. Lastly, you have the entire code package of this application, and you can easily deploy this application on Heroku. Enjoy it!
 
 ---
 
@@ -70,6 +92,10 @@ To use this Backend Platform Application. Please refer the following steps.
 - `Chakra UI`
 - `GraphQL`
 - `Socket.io`
+
+Use `Socket.io` to communicate between a client and a server, so that this web is build on top of the WebSocket protocol to avoid fallback and be able to reconnect.
+
+Use `GraphQL` to handle a complete description of the data in our API, so the `Socket.io` can communicate a client in a faster way to ask what they need.
 
 ---
 
@@ -131,7 +157,6 @@ To use this Backend Platform Application. Please refer the following steps.
 
 If you have any questions about this application, please contact us!<br>
 **Click to the icon to find us**
-
 
 <br>
 <h4 style="display:flex; align-items:center;gap:12px;"><a href="https://github.com/StephCambria" title="video text"><img src="./client/src/image/github-mark-white.png" width="30" height="30"></a>Stephanie Cambria</h4>
