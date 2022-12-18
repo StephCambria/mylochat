@@ -5,7 +5,7 @@ import {
   Center,
   Container,
   Grid,
-  GridItem,  
+  GridItem,
   Heading,
   IconButton,
   Image,
@@ -48,12 +48,12 @@ const About = () => {
         <Box
           bg="#474e5d"
           w="100%"
-          p="15px 0 5px 0"
+          p="15px"
           m="15px 0 15px 0"
           borderRadius="lg"
           borderWidth="1px"
         >
-          <div class="about-section" align="left">
+          <div class="about-section">
             <h1>
               <strong>Our Mission</strong>
             </h1>
@@ -82,7 +82,7 @@ const About = () => {
           borderRadius="lg"
           borderWidth="1px"
         >
-          <div class="about-section" align="left">
+          <div class="about-section">
             <h1>
               <strong>About Us</strong>
             </h1>

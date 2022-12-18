@@ -13,20 +13,16 @@ code {
     monospace;
 }
 
-/* -------------------------------------------------------- */
-/* Navbar Section */
-/* -------------------------------------------------------- */
-
 /* Add a black background color to the top navigation */
 .topnav {
   background-color: #33383b;
   overflow: hidden;
   padding: 10px;
 }
-/* Style the links inside the navigation bar */
+/* Style the links inside the navigation bar (Previous font clor: #a09950) */
 .topnav a {
   background-color: white;
-  color: #bcb45e;
+  color: #b59410;
   float: right;
   text-align: center;
   padding: 10px 15px;
@@ -41,145 +37,25 @@ code {
   color: rgb(75, 124, 92);
 }
 
-/* -------------------------------------------------------- */
-/* About Section */
-/* -------------------------------------------------------- */
+/* ----------------About Section--------------- */
 
 /* About US and Our Mission */
 .about-section {
   padding: 10px;
-  margin-bottom: 30px;
-  border-radius: 15 px;
+  margin: 5px;
+  border-radius: 10px;
   text-align: center;
   background-color: #474e5d;
   color: white;
 }
-/* *,
-  *:before,
-  *:after {
-    box-sizing: inherit;
-  } */
 
-/* Our Team Section */
-.column {
-  float: left;
-  width: 35%;
-  margin-bottom: 16px;
-  padding: 0 5px;
-}
-
-/* Our Team Section (Each Card) */
-.card {
-  margin: 8px;
-  padding: 0 0 16px;
-  background-color: white;
-  box-shadow: 0 4px 8px 0 rgba(110, 27, 27, 0.2);
-  line-height: 30px;
-  opacity: 1;
-}
-
-.container {
-  padding: 0 16px;
-}
-
-/* .container::after,
-.row::after {
-  content: "";
-  clear: both;
-  display: table;
-} */
-
-/* Each Team Profile Wrapped in the Card (Title Name) */
-/* .title {
-  color: #bcb45e;
-  padding: 5px 5px;
-  font-style: italic;
-  font-weight: bold;
-}  */
-
-/* GitHub Link Wrapped in the Card */
-/* .button {
-  border: 0;
-  outline: 0;
-  display: inline-block;
-  padding: 5px 0 5px 0;
-  margin-bottom: 8px;
-  color: #ffffff;
-  background-color: #33383b;
-  text-align: center;
-  cursor: pointer;
-  width: 100%;
-  border-radius: 5px;
-  font-weight: bold;
-} */
+/* -------------Our Team Section (Each Card)---------- */
 
 .button:hover {
-  background-color: #555;
+  background-color: rgb(199, 35, 35);
 }
 
-/* -------------------------------------------------------- */
-/* Footer Section */
-/* -------------------------------------------------------- */
-
-/* Footer Container */
-/* Add a sage green background color to the footer background */
-.footer-distributed {
-  background: rgb(107, 158, 124);
-  box-shadow: 0 1px 1px 0 rgba(93, 54, 54, 0.12);
-  box-sizing: border-box;
-  width: 100%;
-  font: bold 16px sans-serif;
-  text-align: left;
-  padding: 30px 50px 50px 50px;
-  margin-top: 60px;
-  overflow: hidden;
-}
-/* Footer left */
-.footer-distributed .footer-left {
-  float: left;
-}
-/* The Footer Logo Name (Mylo) */
-.footer-distributed h3 {
-  color: #ffffff;
-  font: normal 36px "Roboto", cursive;
-  margin: 0 0 30px;
-}
-/* The Footer Logo Name (Chat) */
-.footer-distributed h3 span {
-  color: #163771;
-}
-/* Footer Links (About/Contact) */
-.footer-distributed .footer-links {
-  color: #ffffff;
-  margin: 0 0 15px;
-  padding: 0;
-  font-size: 20px;
-}
-.footer-distributed .footer-links a {
-  display: inline-block;
-  line-height: 1.8;
-  text-decoration: none;
-  color: inherit;
-}
-
-/* Footer (MyloChat Inc.)*/
-.footer-distributed .footer-company-name {
-  color: #ffffff;
-  margin: 0;
-  font-size: 20px;
-  font-weight: bolder;
-}
-
-/* Footer Social Icon (GitHub) */
-.footer-distributed .footer-icons {
-  margin-top: 30px;
-}
-
-/* Saved for later (GitHub Anchor Tag) */
-/* .footer-distributed .footer-icons a {
-  } */
-
-/* Our Team Section (Profile Image Cat Icon)*/
+/* Our Team Section (Profile Image)*/
 .profile-holder {
   border: 3px;
   outline: 0;

@@ -62,12 +62,14 @@ const Homepage = () => {
             </Text>
           </HStack>
         </Center>
-
-        <Box bg="white" w="100%" p={4} borderRadius="lg" borderWidth="1px">
+        {/* Rose pink: #d1c8c3 (we use for team section) */}
+        <Box bg="#6b9e7c" w="100%" p={4} borderRadius="lg" borderWidth="1px">
           <Tabs variant="soft-rounded" colorScheme="green">
             <TabList mb="1em">
-              <Tab width="70%">Login!</Tab>
-              <Tab width="70%">Sign Up!</Tab>
+              <Tab textColor="white" fontSize="16px" width="50%">
+                Login!
+              </Tab>
+              <Tab width="50%">Sign Up!</Tab>
             </TabList>
             <TabPanels>
               <TabPanel>
