@@ -7,7 +7,7 @@ import Loading from "./Loading";
 // ==========================================================
 // Load chats and the users in them
 // ==========================================================
-const MyChats = () => {
+const MyChats = ({ _id }) => {
   const [loggedUser, setLoggedUser] = useState();
   const { selectedChat, setSelectedChat, user, chats, setChats } = ChatState();
 
@@ -24,7 +24,7 @@ const MyChats = () => {
         },
       };
 
-      const { data } = await axios.get("/api/chat", config);
+      const { data } = await axios.get("/api/chats", config);
       setChats(data);
     } catch (error) {
       toast({
@@ -84,19 +84,20 @@ const MyChats = () => {
         h="100%"
         borderRadius="lg"
         overflowY="hidden"
+        key={_id}
       >
         {chats ? (
           <Stack overflowY="scroll">
-            {[...chats].map((chat) => (
+            {[...chats].map((_id) => (
               <Box
-                onClick={() => setSelectedChat(chat)}
+                onClick={() => setSelectedChat(_id)}
                 cursor="pointer"
-                bg={selectedChat === chat ? "#38B2AC" : "#E8E8E8"}
-                color={selectedChat === chat ? "white" : "black"}
+                bg={selectedChat === _id ? "#38B2AC" : "#E8E8E8"}
+                color={selectedChat === _id ? "white" : "black"}
                 px={3}
                 py={2}
                 borderRadius="lg"
-                key={chat._id}
+                value={_id}
               >
               </Box>
             ))}

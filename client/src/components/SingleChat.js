@@ -1,22 +1,17 @@
-import { ArrowBackIcon } from "@chakra-ui/icons";
 import {
   Box,
   FormControl,
-  IconButton,
   Input,
-  Spinner,
   Text,
   useToast,
+  Button
 } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { ChatState } from "../Context/chatProvider";
 import axios from "axios";
 import "./style.css";
-import TestRenderer from "react-test-renderer";
-//import ScrollableChat from "./ScrollableChat";
 import io from "socket.io-client";
-import Lottie from "lottie-react";
-import animationData from "../animations/typing.json";
+
 
 const ENDPOINT = "http://localhost:3001";
 var socket;
@@ -26,23 +21,25 @@ function SingleChat() {
   // Use State Setup
   // ==========================================================
   const [messages, setMessages] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [newMessage, setNewMessage] = useState("");
+ // const [loading, setLoading] = useState(false);
+  const [newMessage, setNewMessage] = useState([]);
   const [socketConnected, setSocketConnected] = useState(false);
   const [typing, setTyping] = useState(false);
-  const [isTyping, setIsTyping] = useState(false);
+ // const [isTyping, setIsTyping] = useState(false);
 
-  // ==========================================================
-  // Importing options from Lottie JSON
-  // ==========================================================
-  const defaultOptions = {
-    loop: true,
-    autoplay: true,
-    animationData: animationData,
-    rendererSettings: {
-      preserveAspectRatio: "xMidYMid slice",
-    },
-  };
+
+ const [value, setValue] = useState("");
+ const inputReset = React.useRef(null);
+ const [msg, setMsg] = useState([]);
+
+ const submitValue = () => {
+  const msgItem = {
+    msg: value
+  }
+  setMsg((prevMsg) => [...prevMsg, msgItem]);
+  inputReset.current.value = "";
+ };
+
 
   const { user, selectedChat, setSelectedChat } = ChatState();
 
@@ -55,15 +52,9 @@ function SingleChat() {
     socket = io(ENDPOINT);
     socket.emit("success", user);
     socket.on("connected", () => setSocketConnected(true));
-    socket.on("typing", () => setIsTyping(true));
-    socket.on("stop typing", () => setIsTyping(false));
-  }, [user]);
+    socket.on("chat message", (data) => setNewMessage([...messages]));
+  }, [user, messages]);
 
-  // ==========================================================
-  // ==========================================================
-  // Get Messages Functionality
-  // ==========================================================
-  // ==========================================================
 
   // ==========================================================
   // ==========================================================
@@ -71,9 +62,7 @@ function SingleChat() {
   // ==========================================================
   // ==========================================================
   const sendMessage = async (event) => {
-    if (event.key === "Enter" && newMessage) {
-      // Socket for typing
-      socket.emit("stop typing", selectedChat._id);
+    if (event.key === "Enter" && submitValue) {
       try {
         const config = {
           Headers: {
@@ -82,7 +71,7 @@ function SingleChat() {
           },
         };
         const { data } = await axios.post(
-          "/api/message",
+          "/api/messages",
           {
             content: newMessage,
             chatId: selectedChat._id,
@@ -90,12 +79,11 @@ function SingleChat() {
           config
         );
         // Socket for sending a new message
-        socket.emit("chat message", function(data) {
-          const renderer = TestRenderer.create("li", data);
-          console.log(renderer)
-          window.scrollTo(0, document.body.scrollHeight);
+        socket.emit("chat message", function() {
+          
         });
-        setMessages([...messages, data]);
+        setMessages([data]);
+        return newMessage(data);
         // ==========================================================
       } catch (error) {
         toast({
@@ -111,42 +99,12 @@ function SingleChat() {
   };
 
   // ==========================================================
-  // ==========================================================
-  // Typing Functionality
-  // ==========================================================
-  // ==========================================================
-  const typingHandler = (e) => {
-    setNewMessage(e.target.value);
-    // If the socket is not connected, ignore this function
-    if (!socketConnected) return;
-    // Or...
-    if (!typing) {
-      setTyping(true);
-      socket.emit("typing", selectedChat._id);
-    }
-    // Functionality for when and when not to display typing animation
-    let stoppedTyping = new Date().getTime();
-    var timerLength = 3000;
-    setTimeout(() => {
-      var timeNow = new Date().getTime();
-      var timeDiff = timeNow - stoppedTyping;
-
-      if (timeDiff >= timerLength && typing) {
-        socket.emit("stop typing", selectedChat._id);
-        setTyping(false);
-      }
-    }, timerLength);
-  };
-
-  // ==========================================================
   // Output
   // ==========================================================
 
   return (
     <>
       {" "}
-      {selectedChat ? (
-        <>
           <Text
             fontSize={{ base: "28px", md: "30px" }}
             pb={3}
@@ -157,11 +115,6 @@ function SingleChat() {
             justifyContent={{ base: "space-between" }}
             alignItems="center"
           >
-            <IconButton
-              d={{ base: "flex", md: "none" }}
-              icon={<ArrowBackIcon />}
-              onClick={() => setSelectedChat("")}
-            />
           </Text>
           <Box
             d="flex"
@@ -170,61 +123,31 @@ function SingleChat() {
             p={3}
             bg="#E8E8E8"
             w="100%"
-            h="100%"
+            h="75%"
             borderRadius="lg"
             overflowY="hidden"
           >
-            {loading ? (
-              <Spinner
-                size="xl"
-                w={20}
-                h={20}
-                alignSelf="center"
-                margin="auto"
-              />
-            ) : (
-              <Box className="messages" h="80%">
-                {messages}
+              <Box className="messages" h="80%" w="100%" flexDirection="row">
+              <div>
+                {msg.map(({msg}) => (
+                    <p>{msg}</p>
+                ))}
+              </div>
               </Box>
-            )}
-            <FormControl onKeyDown={sendMessage} isRequired mt={3}>
-              {isTyping ? (
-                <div>
-                  <Lottie
-                    options={defaultOptions}
-                    width={70}
-                    style={{ marginBottom: 15, marginLeft: 0 }}
-                  />
-                </div>
-              ) : (
-                <></>
-              )}
+
+            <FormControl onKeyDown={submitValue} isRequired mt={3}>
 
               <Input
+                ref={inputReset}
                 variant="filled"
                 bg="#E0E0E0"
                 placeholder="Say something!"
-                onChange={typingHandler}
-                value={newMessage}
+                onChange={(e) => setValue(e.target.value)}
               />
             </FormControl>
           </Box>
         </>
-      ) : (
-        <Box
-          d="flex"
-          alignItems="center"
-          justifyContent="center"
-          h="100%"
-          w="100%"
-        >
-          <Text fontSize="3xl" pb={3} fontFamily="Work Sans">
-            Test
-          </Text>
-        </Box>
-      )}
-    </>
-  );
-}
+      )
+      }
 
 export default SingleChat;
