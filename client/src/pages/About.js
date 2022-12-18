@@ -90,7 +90,7 @@ const About = () => {
             <p>
               <strong>MyloChat</strong> is a chat messaging APP designed with a
               love for furry felines in mind. We create a platform where you can
-              find your Mylo to start a converstaion!
+              find your Mylo to start a conversation!
             </p>
           </div>
         </Box>
