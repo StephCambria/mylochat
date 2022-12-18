@@ -8,7 +8,6 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 
-
 const Logo = () => {
   return (
     <Image
@@ -21,6 +20,7 @@ const Logo = () => {
 };
 
 const Footer = () => (
+  /* -------------------Footer Box Color------------------ */
   <Box bg="#6b9e7c" color={useColorModeValue("gray.700", "gray.200")}>
     <Container
       as={Stack}
@@ -35,18 +35,6 @@ const Footer = () => (
       <Text fontFamily="Roboto" fontStyle="bold" fontSize="lg" color="white">
         © MyloChat Inc. 2022 | All rights reserved
       </Text>
-
-      {/* Comment out GitHub Link for now, since we already include GitHub in our profile */}
-      {/* <Stack>
-        <ButtonGroup variant="ghost">
-          <IconButton
-            as="a"
-            href="https://github.com/StephCambria/message-app-prototype"
-            aria-label="GitHub"
-            icon={<FaGithub fontSize="2.5rem" />}
-          />
-        </ButtonGroup>
-      </Stack> */}
     </Container>
   </Box>
 );
