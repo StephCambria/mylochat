@@ -132,16 +132,16 @@ To use this Backend Platform Application. Please refer the following steps.
 If you have any questions about this application, please contact us!<br>
 **Click to the icon to find us**
 
+
 <br>
-<h4><a href="https://github.com/StephCambria" title="video text"><img src="./client/src/image/github-mark-white.png" width="30" height="30"></a>Stephanie Cambria</h4>
+<h4 style="display:flex; align-items:center;gap:12px;"><a href="https://github.com/StephCambria" title="video text"><img src="./client/src/image/github-mark-white.png" width="30" height="30"></a>Stephanie Cambria</h4>
 <br>
-<h4><a href="https://github.com/Mykneeisonfire" title="video text"><img src="./client/src/image/github-mark-white.png" width="30" height="30"></a>Tyler Lacson</h4>
+<h4 style="display:flex; align-items:center;gap:12px;"><a href="https://github.com/Mykneeisonfire" title="video text"><img src="./client/src/image/github-mark-white.png" width="30" height="30"></a>Tyler Lacson</h4>
 <br>
-<h4><a href="https://github.com/joyce750526" title="video text"><img src="./client/src/image/github-mark-white.png" width="30" height="30"></a>Joyce Chen</h4>
+<h4 style="display:flex; align-items:center;gap:12px;"><a href="https://github.com/joyce750526" title="video text"><img src="./client/src/image/github-mark-white.png" width="30" height="30"></a>Joyce Chen</h4>
 <br>
-<h4><a href="https://github.com/clacson95" title="video text"><img src="./client/src/image/github-mark-white.png" width="30" height="30"></a>Caleb Lacson</h4>
+<h4 style="display:flex; align-items:center;gap:12px;"><a href="https://github.com/clacson95" title="video text"><img src="./client/src/image/github-mark-white.png" width="30" height="30"></a>Caleb Lacson</h4>
 <br>
-<!-- [![Github](https://user-images.githubusercontent.com/99240807/207831595-5b87bda3-4225-44a4-ae9b-b3178bf91de7.png )](https://github.com/joyce750526) -->
 
 ---
 

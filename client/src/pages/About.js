@@ -5,7 +5,7 @@ import {
   Center,
   Container,
   Grid,
-  GridItem,
+  GridItem,  
   Heading,
   IconButton,
   Image,
