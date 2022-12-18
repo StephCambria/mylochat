@@ -8,7 +8,6 @@ function Nav() {
     <div class="topnav">
       <a href="/about">Donation</a>
       <a href="/about">Story</a>
-      
     </div>
   );
 }
