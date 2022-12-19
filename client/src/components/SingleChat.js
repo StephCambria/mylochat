@@ -4,7 +4,6 @@ import {
   Input,
   Text,
   useToast,
-  Button
 } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { ChatState } from "../Context/chatProvider";
@@ -20,12 +19,10 @@ function SingleChat() {
   // ==========================================================
   // Use State Setup
   // ==========================================================
-  const [messages, setMessages] = useState([]);
+ // const [messages, setMessages] = useState([]);
  // const [loading, setLoading] = useState(false);
-  const [newMessage, setNewMessage] = useState([]);
+  //const [newMessage, setNewMessage] = useState("");
   const [socketConnected, setSocketConnected] = useState(false);
-  const [typing, setTyping] = useState(false);
- // const [isTyping, setIsTyping] = useState(false);
 
 
  const [value, setValue] = useState("");
@@ -41,7 +38,7 @@ function SingleChat() {
  };
 
 
-  const { user, selectedChat, setSelectedChat } = ChatState();
+  const { user } = ChatState();
 
   const toast = useToast();
 
@@ -52,8 +49,8 @@ function SingleChat() {
     socket = io(ENDPOINT);
     socket.emit("success", user);
     socket.on("connected", () => setSocketConnected(true));
-    socket.on("chat message", (data) => setNewMessage([...messages]));
-  }, [user, messages]);
+    socket.on("chat message", () => setMsg([]));
+  }, [user, msg, socketConnected]);
 
 
   // ==========================================================
@@ -73,17 +70,14 @@ function SingleChat() {
         const { data } = await axios.post(
           "/api/messages",
           {
-            content: newMessage,
-            chatId: selectedChat._id,
+            content: msg,
           },
           config
         );
         // Socket for sending a new message
         socket.emit("chat message", function() {
-          
+          setMsg([data]);
         });
-        setMessages([data]);
-        return newMessage(data);
         // ==========================================================
       } catch (error) {
         toast({
@@ -129,13 +123,13 @@ function SingleChat() {
           >
               <Box className="messages" h="80%" w="100%" flexDirection="row">
               <div>
-                {msg.map(({msg}) => (
-                    <p>{msg}</p>
+                {msg.map(({ msg }) => (
+                    <ul key={msg}>{msg}</ul>
                 ))}
               </div>
               </Box>
 
-            <FormControl onKeyDown={submitValue} isRequired mt={3}>
+            <FormControl onKeyDown={sendMessage} isRequired mt={3}>
 
               <Input
                 ref={inputReset}

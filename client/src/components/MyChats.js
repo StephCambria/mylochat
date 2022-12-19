@@ -2,7 +2,6 @@ import { Box, Stack, useToast } from "@chakra-ui/react";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { ChatState } from "../Context/chatProvider";
-import Loading from "./Loading";
 
 // ==========================================================
 // Load chats and the users in them
@@ -24,7 +23,7 @@ const MyChats = ({ _id }) => {
         },
       };
 
-      const { data } = await axios.get("/api/chats", config);
+      const { data } = await axios.get("/api/messages/all", config);
       setChats(data);
     } catch (error) {
       toast({
@@ -86,9 +85,7 @@ const MyChats = ({ _id }) => {
         overflowY="hidden"
         key={_id}
       >
-        {chats ? (
           <Stack overflowY="scroll">
-            {[...chats].map((_id) => (
               <Box
                 onClick={() => setSelectedChat(_id)}
                 cursor="pointer"
@@ -98,13 +95,10 @@ const MyChats = ({ _id }) => {
                 py={2}
                 borderRadius="lg"
                 value={_id}
+                key={chats}
               >
               </Box>
-            ))}
           </Stack>
-        ) : (
-          <Loading />
-        )}
       </Box>
     </Box>
   );
