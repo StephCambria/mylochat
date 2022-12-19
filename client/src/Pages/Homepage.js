@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
 import {
-  Container,
   Box,
-  Text,
+  Center,
+  Container,
+  Image,
   Tab,
   Tabs,
   TabList,
@@ -32,26 +33,24 @@ const Homepage = () => {
 
   return (
     <Container maxW="xl" centerContent>
-      <Box
-        d="flex"
-        justifyContent="center"
+      
+      {/* header */}
+      <Center
         p={3}
-        bg={"white"}
+        bg={"#6b9e7c"}
         w="100%"
         m="40px 0 15px 0"
         borderRadius="lg"
         borderWidth="1px"
       >
-        <Text
-          textAlign="center"
-          fontSize="3xl"
-          fontFamily="Work Sans"
-          color="gray.600"
-        >
-          MyloChat ฅ^•ﻌ•^ฅ
-        </Text>
-      </Box>
+        <Image 
+          align='50% 50%'
+          src={require('../image/hero.png')}
+          alt='Mylo mascot image'
+        />
+      </Center>
 
+      {/* login/signup */}
       <Box bg="white" w="100%" p={4} borderRadius="lg" borderWidth="1px">
         <Tabs variant="soft-rounded" colorScheme="green">
           <TabList mb="1em">
@@ -70,6 +69,7 @@ const Homepage = () => {
           </TabPanels>
         </Tabs>
       </Box>
+
     </Container>
   );
 };
