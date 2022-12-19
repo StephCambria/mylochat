@@ -26,7 +26,7 @@ app.get("/*", (req, res) => {
   res.sendFile(path.join(__dirname, "../client/build/index.html"));
 });
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3000;
 
 // Use app.listen() as an object we can pass through socket.io
 const server = app.listen(PORT, () => {
