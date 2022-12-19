@@ -1,13 +1,69 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif; */
+  font-family: Roboto;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+/* Add a black background color to the top navigation */
+.topnav {
+  background-color: #33383b;
+  overflow: hidden;
+  padding: 10px;
+}
+/* Style the links inside the navigation bar (Previous font clor: #a09950) */
+.topnav a {
+  background-color: white;
+  color: #b59410;
+  float: right;
+  text-align: center;
+  padding: 10px 15px;
+  margin-right: 15px;
+  text-decoration: none;
+  font-size: 17px;
+  border-radius: 14px;
+}
+/* Change the color of links on hover */
+.topnav a:hover {
+  background-color: #d1c8c3;
+  color: rgb(75, 124, 92);
+}
+
+/* ----------------About Section--------------- */
+
+/* About US and Our Mission */
+.about-section {
+  padding: 10px;
+  margin: 5px;
+  border-radius: 10px;
+  text-align: center;
+  background-color: #474e5d;
+  color: white;
+}
+
+/* -------------Our Team Section (Each Card)---------- */
+
+.button:hover {
+  background-color: rgb(199, 35, 35);
+}
+
+/* Our Team Section (Profile Image)*/
+.profile-holder {
+  border: 3px;
+  outline: 0;
+  display: inline-block;
+  padding: 18px;
+  margin-bottom: 20px;
+  background-color: rgb(107, 158, 124);
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
 }
