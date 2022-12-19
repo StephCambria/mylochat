@@ -47,16 +47,28 @@ const io = require("socket.io")(server, {
 });
 
 io.on("connection", (socket) => {
-  console.log("connected to socket.io");
-  socket.on("chat message", message => {
-    io.emit("chat message", message);
+  console.log(`${socket.id} just connected`);
+
+  socket.on("success", () => {
+    socket.join();
+    socket.emit("connected");
   });
 
-  // Typing
-  socket.on("typing", (room) => socket.in(room).emit("typing"));
-  socket.on("stop typing", (room) => socket.in(room).emit("stop typing"));
-
+  // Join chat
+  socket.on("join chat", (room) => {
+    socket.join(room);
+    console.log("User has joined");
   });
 
+  socket.on("chat message", (msg) => {
+    io.emit("chat message", msg);
+  });
+
+  //leave
+  socket.off("setup", () => {
+    console.log("User Disconnected");
+    socket.leave();
+  });
+});
 
 // ==========================================================

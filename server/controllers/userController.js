@@ -66,23 +66,4 @@ const authUser = asyncHandler(async (req, res) => {
   }
 });
 
-// ==========================================================
-// ==========================================================
-// Search User Functionality
-// ==========================================================
-// ==========================================================
-
-// /api/user?search= ${name} or ${email}
-const allUsers = asyncHandler(async (req, res) => {
-  const keyword = req.query.search
-    ? {
-        // Mongoose $or operator specifies what we can search for
-        $or: [
-          { name: { $regex: req.query.search, $options: "i" } }, // Using a regex to query name search
-          { email: { $regex: req.query.search, $options: "i" } }, // Using a regex to query email search
-        ],
-      }
-    : {};
-});
-
-module.exports = { registerUser, authUser, allUsers };
+module.exports = { registerUser, authUser };

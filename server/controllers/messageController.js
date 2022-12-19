@@ -9,17 +9,11 @@ const User = require("../models/User");
 // ==========================================================
 // ==========================================================
 const sendMessage = asyncHandler(async (req, res) => {
-  const { content, chatId } = req.body;
-
-  if (!content) {
-    console.log("Invalid data");
-    return res.sendStatus(400);
-  }
+  const { msg } = req.body;
 
   let newMessage = {
     sender: req.user,
-    content: content,
-    chat: chatId,
+    content: msg,
   };
   try {
     let message = await Message.create(newMessage);
