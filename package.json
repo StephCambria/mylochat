@@ -4,7 +4,7 @@
     "description": "A messaging app that uses React, MERN Stack, Express, MongoDB, Apollo, and GraphQL",
     "main": "server.js",
     "engines": {
-        "node": "6.94"
+        "node": "6.11.1"
     },
     "scripts": {
         "start": "node server/server.js",
