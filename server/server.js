@@ -3,6 +3,8 @@ const express = require("express");
 const dotenv = require("dotenv");
 const connectDB = require("./config/connection");
 const routes = require("./routes");
+const socketIO = require("socket.io");
+const path = require("path");
 
 // Create an instance of express
 const app = express();
@@ -22,11 +24,12 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../client/build")));
 }
 
-app.get("/", (req, res) => {
+app.get("/*", (req, res) => {
   res.sendFile(path.join(__dirname, "../client/build/index.html"));
 });
 
 const PORT = process.env.PORT || 3001;
+
 
 // Use app.listen() as an object we can pass through socket.io
 const server = app.listen(PORT, () => {
@@ -38,12 +41,12 @@ const server = app.listen(PORT, () => {
 // Socket.io
 // ==========================================================
 // ==========================================================
-const io = require("socket.io")(server, {
+const io = socketIO(server, {
   // If a user hasn't sent anything in 60 seconds, close the connection to save the bandwidth
   pingTimeout: 60000,
-  cors: {
-    origin: "http://localhost:3000",
-  },
+  //cors: {
+    //origin: "http://localhost:3001",
+  //},
 });
 
 io.on("connection", (socket) => {
