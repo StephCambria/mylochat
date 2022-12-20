@@ -2,6 +2,9 @@
     "name": "mylochat",
     "version": "1.0.0",
     "description": "A messaging app that uses React, MERN Stack, Express, MongoDB, Apollo, and GraphQL",
+    "engines": {
+        "node": "v16.17.0"
+    },
     "main": "server.js",
     "scripts": {
         "start": "node server/server.js",
