@@ -24,9 +24,18 @@
 
 ## Purpose:
 
-`MyloChat` was originally inspired by homeless cats!
+`MyloChat` is a simple messaging app that was inspired by the stray cat our teacher feeds!
 
-While creating this messaging application, our mission was to create a non-profitable platform to spread awareness to animal lovers about animals that are endangered, neglected, mistreated, in need of food and medical care, or otherwise without homes a free chat service.
+While creating this application, our mission was to create a non-profitable platform to spread awareness to animal lovers about animals that are endangered, neglected, mistreated, in need of food and medical care, or otherwise without homes a free chat service.       
+
+Whether they are cuddly companions that we keep in our homes, or majestic wildlife that we view from afar, animals are valuable participants of our world. They bring us comfort, teach us about compassion, selflessness, and beauty, and are essential components in this worldwide ecosystem we call Earth. Our mission at MyloChat is to spread awareness about animals that are endangered, abused, neglected, or otherwise without homes.
+
+Currently this application is web-only, and still in its development phase. Future plans for `MyloChat` include but are not limited to:
+
+* A full-scale messaging system
+* A mobile version
+* Personalized user profiles
+* A donation system
 
 ## Installation:
 
@@ -43,12 +52,6 @@ This application is deployed via Heroku (pending).
 - `Socket.io`
 - `MongoDB Atlas`
 - `Mongoose`
-
-Use `Socket.io` to communicate between a client and a server, so that this web is build on top of the WebSocket protocol to avoid fallback and be able to reconnect.
-
-Use `GraphQL` to handle a complete description of the data in our API, so the `Socket.io` can communicate a client in a faster way to ask what they need.
-
----
 
 ## Screenshots:
 
