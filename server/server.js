@@ -3,6 +3,7 @@ const express = require("express");
 const dotenv = require("dotenv");
 const connectDB = require("./config/connection");
 const routes = require("./routes");
+const socketIO = require("socket.io");
 
 // Create an instance of express
 const app = express();
@@ -28,6 +29,7 @@ app.get("/*", (req, res) => {
 
 const PORT = process.env.PORT || 3000;
 
+
 // Use app.listen() as an object we can pass through socket.io
 const server = app.listen(PORT, () => {
   console.log(`API server running on ${PORT}`);
@@ -38,7 +40,7 @@ const server = app.listen(PORT, () => {
 // Socket.io
 // ==========================================================
 // ==========================================================
-const io = require("socket.io")(server, {
+const io = socketIO(server, {
   // If a user hasn't sent anything in 60 seconds, close the connection to save the bandwidth
   pingTimeout: 60000,
   cors: {
