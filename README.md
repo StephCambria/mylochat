@@ -39,7 +39,7 @@ Currently this application is web-only, and still in its development phase. Futu
 
 ## Installation:
 
-This application is deployed via Heroku (pending).
+This application is deployed via [Heroku](https://mylo-app.herokuapp.com/).
 
 ## Techcologies Used
 
@@ -54,6 +54,9 @@ This application is deployed via Heroku (pending).
 - `Mongoose`
 
 ## Screenshots:
+
+<img width="1535" alt="Screenshot 2022-12-19 at 9 51 35 PM" src="https://user-images.githubusercontent.com/107421370/208570544-80d5bfd2-b68e-4f96-855a-e0cde727dd8a.png">
+
 
 ## Questions:
 
