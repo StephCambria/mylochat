@@ -1,15 +1,13 @@
 import "./App.css";
 import { Route, Switch } from "react-router-dom";
-import Nav from "./components/Nav";
 import Homepage from "./Pages/Homepage";
 import ChatPage from "./Pages/ChatPage";
 import About from "./Pages/About";
-// import Header from "./components/Header";
-// import Footer from "./components/Footer";
+import Footer from "./components/Footer";
 
 function App() {
   return (
-    <div className="">
+    <div className="App">
       <Nav />
       {/* <Header /> */}
       <Switch>

@@ -2,10 +2,9 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const connectDB = require("./config/connection");
-const userRoutes = require("./routes/userRoutes");
-const chatRoutes = require("./routes/chatRoutes");
-const messageRoutes = require("./routes/messageRoutes");
-const { notFound, errorHandler } = require("./middleware/errorMiddleware");
+const routes = require("./routes");
+const socketIO = require("socket.io");
+const path = require("path");
 
 // Create an instance of express
 const app = express();
@@ -13,19 +12,24 @@ dotenv.config();
 connectDB();
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // ==========================================================
 // Routing
 // ==========================================================
-app.use(userRoutes);
-app.use(chatRoutes);
-app.use(messageRoutes);
+app.use(routes);
 // ==========================================================
 
-app.use(notFound);
-app.use(errorHandler);
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "../client/build")));
+}
 
-const PORT = process.env.PORT || 3000;
+app.get("/*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../client/build/index.html"));
+});
+
+const PORT = process.env.PORT || 3001;
+
 
 // Use app.listen() as an object we can pass through socket.io
 const server = app.listen(PORT, () => {
@@ -37,50 +41,37 @@ const server = app.listen(PORT, () => {
 // Socket.io
 // ==========================================================
 // ==========================================================
-const io = require("socket.io")(server, {
+const io = socketIO(server, {
   // If a user hasn't sent anything in 60 seconds, close the connection to save the bandwidth
   pingTimeout: 60000,
-  cors: {
-    origin: "http://localhost:3000",
-  },
+  //cors: {
+    //origin: "http://localhost:3001",
+  //},
 });
 
 io.on("connection", (socket) => {
-  console.log("connected to socket.io");
+  console.log(`${socket.id} just connected`);
 
-  // Connect user to their personal web socket upon loading the app
-  socket.on("setup", (userData) => {
-    socket.join(userData._id);
+  socket.on("success", () => {
+    socket.join();
     socket.emit("connected");
   });
 
   // Join chat
   socket.on("join chat", (room) => {
     socket.join(room);
-    console.log("User joined room " + room);
+    console.log("User has joined");
   });
 
-  // Typing
-  socket.on("typing", (room) => socket.in(room).emit("typing"));
-  socket.on("stop typing", (room) => socket.in(room).emit("stop typing"));
+  socket.on("chat message", (msg) => {
+    io.emit("chat message", msg);
+  });
 
-  // New message
-  socket.on("new message", (newMessageReceived) => {
-    var chat = newMessageReceived.chat;
-
-    // For debugging
-    if (!chat.users) return console.log("chat.users undefined");
-
-    chat.users.forEach((user) => {
-      if (user._id == newMessageReceived.sender._id) return;
-
-      socket.in(user._id).emit("message received", newMessageReceived);
-    });
-
-    socket.off("setup", () => {
-      console.log("User Disconnected");
-      socket.leave(userData._id);
-    });
+  //leave
+  socket.off("setup", () => {
+    console.log("User Disconnected");
+    socket.leave();
   });
 });
+
 // ==========================================================

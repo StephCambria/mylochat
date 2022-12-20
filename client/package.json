@@ -1,7 +1,6 @@
 {
   "name": "mylochat-app",
   "version": "0.1.0",
-  "proxy": "http://localhost:3000",
   "private": true,
   "dependencies": {
     "@chakra-ui/icons": "^2.0.13",
@@ -16,9 +15,11 @@
     "lottie-react": "^2.3.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-icons": "^4.7.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "5.0.1",
     "react-scroll": "^1.8.9",
+    "react-test-renderer": "^18.2.0",
     "socket.io-client": "^4.5.4",
     "web-vitals": "^2.1.4"
   },
