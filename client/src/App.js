@@ -4,6 +4,7 @@ import Homepage from "./Pages/Homepage";
 import ChatPage from "./Pages/ChatPage";
 import About from "./Pages/About";
 import Footer from "./components/Footer";
+import Nav from "./components/Nav";
 
 function App() {
   return (
@@ -15,7 +16,7 @@ function App() {
         <Route path="/about" component={About} exact />
         <Route path="/chats" component={ChatPage} />
       </Switch>
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 }
