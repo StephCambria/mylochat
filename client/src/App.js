@@ -13,7 +13,7 @@ function App() {
         <Route path="/about" component={About} exact />
         <Route path="/chats" component={ChatPage} />
       </Switch>
-      {Footer}
+      <Footer/>
     </div>
   );
 }
